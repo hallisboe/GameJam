@@ -8,9 +8,12 @@ class Player{
 	}
 
 	draw(){
+		push();
 		fill(255,100,188);
+		translate(this.pos.x,this.pos.y,this.size,this.size*2);
 		rotate(this.rotation);
-		rect(this.pos.x,this.pos.y,this.size,this.size*2);
+		rect(-this.size/2,-this.size,this.size,this.size*2);
+		pop();
 	}
 
 	move(){
@@ -19,7 +22,7 @@ class Player{
 	}
 
 	lookAt(){
-		//this.rotation = atan((mouseX - this.pos.x)/(mouseY - this.pos.y));
+		this.rotation = atan2((mouseY - this.pos.y),(mouseX - this.pos.x)) + 90;
 	}
 
 	update(){

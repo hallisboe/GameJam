@@ -18,6 +18,8 @@ let height = window.innerHeight
 function setup() {
   createCanvas(width, height);
   background(51);
+  cursor(CROSS);
+  angleMode(DEGREES);
 
   world = new World();
   player = new Player({x: width/2, y: height/2});
@@ -55,6 +57,10 @@ function keyReleased(){
   else if(keyCode === 65 || keyCode === 68){
   	player.vel.x = 0;
   }
+}
+
+function mouseClicked(){
+	console.log("MousePos: " + mouseX + ", " + mouseY);
 }
 
 
