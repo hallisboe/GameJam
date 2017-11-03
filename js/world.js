@@ -1,11 +1,11 @@
 class World {
 
 	constructor(tiles){
-	  	this.tiles = generate();
+	  	this.tiles = this.generate();
   	}
 
   	generate() {
-  		tiles = [];
+  		let tiles = [];
   		for(let x = 0; x < 100; x++) {
   			for(let y = 0; y < 100; y++) {
   				tiles.push(new Tile({'x': x * SCALE, 'y': y * SCALE}));
