@@ -13,18 +13,18 @@ class Player{
 		rect(this.pos.x,this.pos.y,this.size,this.size*2);
 	}
 
-	move(horizontal,vertical){
-		this.pos.x += horizontal*this.movSpeed;
-		this.pos.y += vertical*this.movSpeed;
+	move(vel){
+		this.pos.x += this.vel.x*this.movSpeed;
+		this.pos.y += this.vel.y*this.movSpeed;
 	}
 
 	lookAt(){
-		this.rotation = atan((mouseX - this.pos.x)/(mouseY - this.pos.y));
+		//this.rotation = atan((mouseX - this.pos.x)/(mouseY - this.pos.y));
 	}
 
-	update(){
-		move();
-		lookAt();
-		draw();
+	update(playerVel){
+		this.move(playerVel);
+		this.lookAt();
+		this.draw();
 	}
 }
