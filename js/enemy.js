@@ -4,7 +4,7 @@ class Enemy {
 		this.pos = pos;
 		this.vel = {x: 0, y: 0};
 		this.r = 10;
-		this.speed = 1;
+		this.speed = 2;
 		this.minDistance = 10;
 	}
 

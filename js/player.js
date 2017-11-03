@@ -49,7 +49,7 @@ class Player{
 
 	checkCollision(enemies){
 		for(let i = this.bullets.length - 1; i >= 0; i--){
-			this.bullets[i].checkCollision(enemies);
+			this.bullets[i].checkCollision(enemies,this.bullets);
 		}
 	}
 }
