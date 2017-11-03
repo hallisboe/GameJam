@@ -61,6 +61,7 @@ function keyReleased(){
 
 function mouseClicked(){
 	console.log("MousePos: " + mouseX + ", " + mouseY);
+	player.shoot();
 }
 
 

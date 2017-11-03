@@ -5,6 +5,7 @@ class Player{
 		this.size = 10;
 		this.movSpeed = 3;
 		this.rotation = 0;
+		this.bullets = [];
 	}
 
 	draw(){
@@ -14,6 +15,15 @@ class Player{
 		rotate(this.rotation);
 		rect(-this.size/2,-this.size,this.size,this.size*2);
 		pop();
+
+		for(let i = this.bullets.length - 1; i >= 0; i--){
+			if(this.bullets[i].expired()){
+				this.bullets.splice(i,1);
+				continue;
+			}
+			this.bullets[i].update();
+			this.bullets[i].draw();
+		}
 	}
 
 	move(){
@@ -29,5 +39,9 @@ class Player{
 		this.move();
 		this.lookAt();
 		this.draw();
+	}
+
+	shoot(){
+		this.bullets.push(new Bullet(this.pos,this.vel));
 	}
 }
