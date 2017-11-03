@@ -1,7 +1,7 @@
 class Player{
 	constructor(pos){
 		this.pos = pos;
-		this.vel = {x: 1, y: 1};
+		this.vel = {x: 0, y: 0};
 		this.size = 10;
 		this.movSpeed = 3;
 		this.rotation = 0;
@@ -13,7 +13,7 @@ class Player{
 		rect(this.pos.x,this.pos.y,this.size,this.size*2);
 	}
 
-	move(vel){
+	move(){
 		this.pos.x += this.vel.x*this.movSpeed;
 		this.pos.y += this.vel.y*this.movSpeed;
 	}
@@ -22,8 +22,8 @@ class Player{
 		//this.rotation = atan((mouseX - this.pos.x)/(mouseY - this.pos.y));
 	}
 
-	update(playerVel){
-		this.move(playerVel);
+	update(){
+		this.move();
 		this.lookAt();
 		this.draw();
 	}
