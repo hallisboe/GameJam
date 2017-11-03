@@ -19,7 +19,7 @@ let height = window.innerHeight
 || document.body.clientHeight;
 
 function preload(){
-  //sprites = new Sprites();
+  sprites = new Sprites();
 }
 
 
