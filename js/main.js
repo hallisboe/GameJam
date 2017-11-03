@@ -1,8 +1,9 @@
+"use strict";
+
+
+
 let world;
-
-
 const SCALE = 50;
-co
 
 let width = window.innerWidth
 || document.documentElement.clientWidth
@@ -16,7 +17,8 @@ let height = window.innerHeight
 function setup() {
   createCanvas(width, height);
   background(51);
-  world = new World({{x: 0, y: 0}});
+
+  world = new World();
 }
 
 function draw(){
