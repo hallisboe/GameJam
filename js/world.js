@@ -1,7 +1,7 @@
 class World {
 
-	constructor(pos){
-	  	this.map = {};
+	constructor(map){
+	  	this.map = map;
   	}
 
 	draw(){

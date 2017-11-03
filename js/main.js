@@ -16,7 +16,7 @@ let height = window.innerHeight
 function setup() {
   createCanvas(width, height);
   background(51);
-  world = new World();
+  world = new World({{x: 0, y: 0}});
 }
 
 function draw(){
