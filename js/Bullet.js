@@ -29,8 +29,6 @@ class Bullet {
 	update(){
 		this.pos.x += this.vel.x*this.speed;
 		this.pos.y += this.vel.y*this.speed;
-		this.pos.x = (this.pos.x >= width)? width : (this.pos.x <= 0)? 0 : this.pos.x;
-		this.pos.y = (this.pos.y >= height)? height : (this.pos.y <= 0)? 0 : this.pos.y;
 	}
 
 	expired(){
@@ -41,6 +39,16 @@ class Bullet {
 		return false;
 	}
 
-
+	checkCollision(enemies){
+		for(let i = enemies.length - 1; i >= 0; i--){
+			let x = enemies[i].pos.x - this.pos.x;
+			let y = enemies[i].pos.y - this.pos.y;
+			let distance = sqrt(pow(x,2) + pow(y,2));
+			if(distance <= enemies[i].r*2){
+				enemies.splice(i,1);
+			}
+		}
+		
+	}
 
 }

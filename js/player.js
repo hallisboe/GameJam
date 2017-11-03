@@ -29,6 +29,8 @@ class Player{
 	move(){
 		this.pos.x += this.vel.x*this.movSpeed;
 		this.pos.y += this.vel.y*this.movSpeed;
+		this.pos.x = (this.pos.x >= width)? width : (this.pos.x <= 0)? 0 : this.pos.x;
+		this.pos.y = (this.pos.y >= height)? height : (this.pos.y <= 0)? 0 : this.pos.y;
 	}
 
 	lookAt(){
@@ -43,5 +45,11 @@ class Player{
 
 	shoot(){
 		this.bullets.push(new Bullet(this.pos,this.vel));
+	}
+
+	checkCollision(enemies){
+		for(let i = this.bullets.length - 1; i >= 0; i--){
+			this.bullets[i].checkCollision(enemies);
+		}
 	}
 }

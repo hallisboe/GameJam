@@ -3,7 +3,7 @@ class Tile {
 	constructor(pos) {
 		this.pos = pos;
 		this.type = 0;
-		this.sprite = loadImage("sprites/type0.jpg");
+		//this.sprite = loadImage();
 	}
 
 	draw() {

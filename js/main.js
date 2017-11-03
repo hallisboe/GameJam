@@ -4,7 +4,9 @@
 
 let world;
 let player;
+let enemies = [];
 const SCALE = 50;
+const enemyLimit = 10;
 
 let width = window.innerWidth
 || document.documentElement.clientWidth
@@ -23,18 +25,22 @@ function setup() {
 
   world = new World();
   player = new Player({x: width/2, y: height/2});
+
+  initializeEnemies();
 }
 
 function draw(){
   background(51);
   world.draw();
-
   player.update();
+  player.checkCollision(enemies);
+
+
+  enemies.forEach(enemy => enemy.update(player.pos));
 }
 
 function keyPressed(){
   // Add player controls
-  console.log("KeyCode: " + keyCode);
   if(keyCode === 87){
   	player.vel.y = -1;
   }
@@ -60,8 +66,19 @@ function keyReleased(){
 }
 
 function mouseClicked(){
-	console.log("MousePos: " + mouseX + ", " + mouseY);
 	player.shoot();
+}
+
+function initializeEnemies(){
+	for(let i = 0; i < enemyLimit; i++){
+		createNewEnemy(i);
+	}
+}
+
+function createNewEnemy(i){
+	let x = map(random(),0,1,0,width);
+	let y = map(random(),0,1,0,height);
+	enemies[i] = new Enemy({x: x, y: y});
 }
 
 
