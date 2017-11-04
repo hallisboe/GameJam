@@ -9,6 +9,7 @@ let sprites;
 const SCALE = 50;
 const enemyLimit = 10;
 
+let building;
 
 let width = window.innerWidth
 || document.documentElement.clientWidth
@@ -19,7 +20,7 @@ let height = window.innerHeight
 || document.body.clientHeight;
 
 function preload(){
-  sprites = new Sprites();
+  //sprites = new Sprites();
 }
 
 
@@ -32,6 +33,7 @@ function setup() {
   world = new World();
   player = new Player({x: width/2, y: height/2});
   enemyController = new EnemyController(enemyLimit);
+  building = new Building({x: 200, y: 200});
 }
 
 function draw(){
@@ -39,7 +41,8 @@ function draw(){
   world.draw();
   player.update();
   player.checkCollision(enemyController.enemies);
-  enemyController.update(player.pos);
+  enemyController.update(player);
+  building.draw();
 }
 
 function keyPressed(){

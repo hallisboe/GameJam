@@ -6,6 +6,7 @@ class Player{
 		this.movSpeed = 3;
 		this.rotation = 0;
 		this.bullets = [];
+		this.health = 100;
 	}
 
 	draw(){
@@ -51,5 +52,10 @@ class Player{
 		for(let i = this.bullets.length - 1; i >= 0; i--){
 			this.bullets[i].checkCollision(enemies,this.bullets);
 		}
+	}
+
+	reduceHealth(){
+		this.health -= 1;
+		console.log("Health: " + this.health);
 	}
 }
