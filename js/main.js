@@ -5,13 +5,10 @@
 let world;
 let player;
 let enemyController;
-<<<<<<< HEAD
 let sprites;
 let inventory;
 let gui;
-=======
 let sprite;
->>>>>>> f048c9c7df861339b506370ad4e9e0df9402b668
 const SCALE = 50;
 const enemyLimit = 10;
 let canvas;
