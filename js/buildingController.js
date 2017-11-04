@@ -30,4 +30,15 @@ class BuildingController{
 		return this.buildings.length - 1;
 	}
 
+	isPosAvailable(pos){
+		let isAvailable = true;
+		this.buildings.forEach(b => {
+			if(abs(pos.x - b.pos.x) <= 3 && abs(pos.y - b.pos.y) <= 3){
+				isAvailable = false;
+				return;
+			}
+		});
+		return isAvailable;
+	}
+
 }

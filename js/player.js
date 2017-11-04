@@ -14,16 +14,16 @@ class Player{
 		this.drawHealthBar();
 		fill(255,100,188);
 		if(this.vel.y == 1 || (this.vel.x === 0 && this.vel.y === 0)){
-			image(sprite.playerFront,this.pos.x,this.pos.y - this.size);
+			image(sprite.playerFront,this.pos.x - this.size/4,this.pos.y - this.size);
 		}
 		else if(this.vel.y == -1){
-			image(sprite.playerBack,this.pos.x,this.pos.y - this.size);
+			image(sprite.playerBack,this.pos.x - this.size/4,this.pos.y - this.size);
 		}
 		else if(this.vel.x == -1){
-			image(sprite.playerLeft,this.pos.x,this.pos.y - this.size);
+			image(sprite.playerLeft,this.pos.x - this.size/4,this.pos.y - this.size);
 		}
 		else if(this.vel.x == 1){
-			image(sprite.playerRight,this.pos.x,this.pos.y - this.size);
+			image(sprite.playerRight,this.pos.x - this.size/4,this.pos.y - this.size);
 		}
 		//rect(-this.size/2,-this.size,this.size,this.size*2);
 		pop();
@@ -40,9 +40,9 @@ class Player{
 
 	drawHealthBar(){
 		fill(255,0,0);
-		rect(-35,- 35,70,10);
+		rect(this.pos.x-35,this.pos.y- 70,70,10);
 		fill(0,255,0);
-		rect(-35, - 35,map(this.health,0,100,0,70),10);
+		rect(this.pos.x-35, this.pos.y-70,map(this.health,0,100,0,70),10);
 	}
 
 	getCurrentTile() {
