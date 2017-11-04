@@ -94,15 +94,15 @@ function keyReleased(){
   }
 }
 
-function mouseClicked(){
+function mousePressed(){
 	player.shoot();
 
-  if(isHolding){
+  if(isHolding && buildingController.isPosAvailable(buildOrder.getPos())){
     buildingController.createMiner(buildOrder.getPos());
     isHolding = false;
     inventory.r1 -= minerPrice;
   }
-  else if(gui.purchaseMiner.isClicked(mouseX,mouseY) && inventory.r1 >= minerPrice){
+  else if(!isHolding && gui.purchaseMiner.isClicked(mouseX,mouseY) && inventory.r1 >= minerPrice){
     isHolding = true;
     buildOrder = new BuildOrder(0);
   }
