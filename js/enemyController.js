@@ -18,11 +18,11 @@ class EnemyController{
 		return (new Enemy({x: x, y: y}));
 	}
 
-	update(playerPos){
+	update(player){
 		if(this.enemies.length < this.limit){
 			this.enemies.push(this.createNewEnemy());
 		}
 
-		this.enemies.forEach(enemy => enemy.update(playerPos));
+		this.enemies.forEach(enemy => enemy.update(player));
 	}
 }
