@@ -31,12 +31,12 @@ class Swarm {
 	}
 
 	updateTargets() {
-		//this.target = {score: -1000, pos: {x: 0, y: 0}, building: buildingController.buildings[0]};
-		console.log(this.target.score);
+		this.target = {score: 1000, pos: player.pos, building: player};
+		//console.log(this.target.score);
 		buildingController.buildings.forEach(building => {
 			let score = Math.sqrt(Math.pow(this.pos.x - building.pos.x, 2) + Math.pow(this.pos.y - building.pos.y, 2));
 			if(score < this.target.score) {
-				this.target = {'score': score, pos: building.pos, 'building': building};
+				this.target = {score: score, pos: building.pos, building: building};
 			}
 		});
 	}

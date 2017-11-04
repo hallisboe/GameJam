@@ -6,31 +6,29 @@ class Enemy {
 		this.r = 10;
 		this.speed = 1;
 		this.minDistance = 10;
-		this.attackRate = 200000;
+		this.attackRate = 5;
 		this.attackElapsed = 0;
 	}
 
 	draw(){
-		//console.log(this.pos)
 		fill(0);
 		ellipse(this.pos.x - this.r, this.pos.y - this.r,this.r*2,this.r*2);
 	}
 
-	moveTowards(target){
-		if(abs(target.pos.x - this.pos.x) >= this.minDistance || abs(target.pos.y - this.pos.y) >= this.minDistance){
-
+	attack(target){
+		if(abs(target.pos.x - this.pos.x) <= this.minDistance && abs(target.pos.y - this.pos.y) <= this.minDistance){
+			if(this.attackElapsed >= this.attackRate){
+				this.attackElapsed = 0;
+				console.log("Attacking");
+				target.building.reduceHealth();
+				console.log(target.building);
+			}
 		}
-		else if(target.building.reduceHealth() && this.attackElapsed >= this.attackRate){
-			this.attackElapsed = 0;
-			target.building.reduceHealth();
-		}
-		else{
-			this.attackElapsed++;
-		}
+		this.attackElapsed++;
 	}
 
 	update(target, pos){
-		this.moveTowards(target);
+		this.attack(target);
 		this.pos = pos;
 		this.draw();
 	}

@@ -50,7 +50,7 @@ class Building{
 	}
 
 	reduceHealth(){
-		this.health = (this.health <= 0)? 0 : this.health -= 1;
+		this.health = (this.health <= 0)? 0 : this.health - 1;
 	}
 
 	checkHealth(){
