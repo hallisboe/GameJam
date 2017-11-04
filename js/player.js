@@ -99,4 +99,11 @@ class Player{
 	reduceHealth(){
 		this.health = (this.health <= 0)? 0 : this.health -= 1;
 	}
+
+	checkPortalCollision(pos){
+		if(abs(this.pos.x - pos.x) <= 20 && abs(this.pos.y - pos.y) <= 20){
+			return true;
+		}
+		return false;
+	}
 }

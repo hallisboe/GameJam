@@ -66,6 +66,11 @@ function draw(){
     buildOrder.draw(mouseX,mouseY);
   }
 
+  if(player.checkPortalCollision(world.portalPos)){
+      player.pos = {x: world.portalPos.x - 100, y: world.portalPos.y};
+      changeWorld();
+  }
+
   gui.draw(); //Have to be the last one to draw
 }
 
@@ -93,9 +98,6 @@ function keyReleased(){
   else if(keyCode === 65 || keyCode === 68){
   	player.vel.x = 0;
   }
-  else{
-    changeWorld();
-  }
 }
 
 function mousePressed(){
@@ -116,5 +118,7 @@ function changeWorld(){
   let temp = world;
   world = world2;
   world2 = temp;
+  world.draw();
+  loadPixels();
   console.log("Changed World");
 }
