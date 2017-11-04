@@ -54,12 +54,9 @@ function draw(){
   background(51);
   updatePixels();
   player.update();
-<<<<<<< HEAD
   player.checkCollision(enemyController.enemies);
   enemyController.update(buildingController.buildings[buildingController.latestBuilding()]); 
-=======
   player.checkCollision(enemyController.enemies); 
->>>>>>> 8ba1b8f180b5fbb99864c8046ea6dac7efe4ee7d
   enemyController.update(buildingController.buildings[buildingController.latestBuilding()]);
   buildingController.update();
 
