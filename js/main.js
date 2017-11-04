@@ -5,12 +5,17 @@
 let world;
 let player;
 let enemyController;
+<<<<<<< HEAD
 let sprites;
 let inventory;
 let gui;
+=======
+let sprite;
+>>>>>>> f048c9c7df861339b506370ad4e9e0df9402b668
 const SCALE = 50;
 const enemyLimit = 10;
-
+let canvas;
+let bg;
 let building;
 
 let width = window.innerWidth
@@ -22,7 +27,7 @@ let height = window.innerHeight
 || document.body.clientHeight;
 
 function preload(){
-  //sprites = new Sprites();
+  sprite = loadImage("http://i.imgur.com/x2OngvR.png");
 }
 
 
@@ -35,6 +40,8 @@ function setup() {
   world = new World();
   player = new Player({x: width/2, y: height/2});
   enemyController = new EnemyController(enemyLimit);
+  world.draw();
+  loadPixels();
   building = new Building({x: 200, y: 200});
   inventory = new Inventory();
   gui = new GUI(inventory);
@@ -42,7 +49,7 @@ function setup() {
 
 function draw(){
   background(51);
-  world.draw();
+  updatePixels();
   player.update();
   player.checkCollision(enemyController.enemies);
   enemyController.update(building);
