@@ -18,6 +18,10 @@ class BuildingController{
 		this.buildings.push(new Base(pos,this.inventory));
 	}
 
+	createTurret(pos){
+		this.buildings.push(new Turret(pos));
+	}
+
 	checkHealth(){
 		this.buildings.forEach(b => {
 			if(b.checkHealth() && b instanceof Miner){

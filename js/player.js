@@ -25,7 +25,6 @@ class Player{
 		else if(this.vel.x == 1){
 			image(sprite.playerRight,this.pos.x - this.size/4,this.pos.y - this.size);
 		}
-		//rect(-this.size/2,-this.size,this.size,this.size*2);
 		pop();
 
 		for(let i = this.bullets.length - 1; i >= 0; i--){
