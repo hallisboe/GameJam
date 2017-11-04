@@ -28,7 +28,7 @@ let height = window.innerHeight
 || document.body.clientHeight;
 
 function preload(){
-  sprite = loadImage("http://i.imgur.com/fjdKxpe.png");
+  sprite = new Sprites();  //loadImage("http://i.imgur.com/fjdKxpe.png");
 }
 
 
@@ -106,9 +106,3 @@ function mouseClicked(){
     buildOrder = new BuildOrder(0);
   }
 }
-
-
-
-
-
-

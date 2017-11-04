@@ -2,7 +2,7 @@ class Player{
 	constructor(pos){
 		this.pos = pos;
 		this.vel = {x: 0, y: 0};
-		this.size = 10;
+		this.size = 50;
 		this.movSpeed = 3;
 		this.rotation = 0;
 		this.bullets = [];
@@ -11,11 +11,21 @@ class Player{
 
 	draw(){
 		push();
-		translate(this.pos.x,this.pos.y,this.size,this.size*2);
 		this.drawHealthBar();
 		fill(255,100,188);
-		rotate(this.rotation);
-		rect(-this.size/2,-this.size,this.size,this.size*2);
+		if(this.vel.y == 1 || (this.vel.x === 0 && this.vel.y === 0)){
+			image(sprite.playerFront,this.pos.x,this.pos.y - this.size);
+		}
+		else if(this.vel.y == -1){
+			image(sprite.playerBack,this.pos.x,this.pos.y - this.size);
+		}
+		else if(this.vel.x == -1){
+			image(sprite.playerLeft,this.pos.x,this.pos.y - this.size);
+		}
+		else if(this.vel.x == 1){
+			image(sprite.playerRight,this.pos.x,this.pos.y - this.size);
+		}
+		//rect(-this.size/2,-this.size,this.size,this.size*2);
 		pop();
 
 		for(let i = this.bullets.length - 1; i >= 0; i--){
