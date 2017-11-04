@@ -6,7 +6,8 @@ class Player{
 		this.movSpeed = 3;
 		this.rotation = 0;
 		this.bullets = [];
-		this.health = 100;
+		this.startHealth = 500;
+		this.health = 500;
 	}
 
 	draw(){
@@ -41,7 +42,7 @@ class Player{
 		fill(255,0,0);
 		rect(this.pos.x-35,this.pos.y- 70,70,10);
 		fill(0,255,0);
-		rect(this.pos.x-35, this.pos.y-70,map(this.health,0,100,0,70),10);
+		rect(this.pos.x-35, this.pos.y-70,map(this.health,0,this.startHealth,0,70),10);
 	}
 
 	getCurrentTile() {

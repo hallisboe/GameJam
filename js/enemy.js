@@ -19,9 +19,7 @@ class Enemy {
 		if(abs(target.pos.x - this.pos.x) <= this.minDistance && abs(target.pos.y - this.pos.y) <= this.minDistance){
 			if(this.attackElapsed >= this.attackRate){
 				this.attackElapsed = 0;
-				console.log("Attacking");
 				target.building.reduceHealth();
-				console.log(target.building);
 			}
 		}
 		this.attackElapsed++;
@@ -32,4 +30,5 @@ class Enemy {
 		this.pos = pos;
 		this.draw();
 	}
+
 }

@@ -9,7 +9,8 @@ class Swarm {
 		this.speed = 1;
 		this.minDistance = 10;
 		for(let i = 0; i < 10; i++) {
-			this.enemies.push(new Enemy(this.pos));
+			let startPos = {x: this.pos.x+(i-5)*60 - 400, y: this.pos.y-(i-5)*60 - 400};
+			this.enemies.push(new Enemy(startPos));
 		}
 	}
 
@@ -26,18 +27,37 @@ class Swarm {
 			this.pos.x += this.vel.x;
 		}
 		this.enemies.forEach(enemy => {
-			enemy.update(this.target, this.pos);
+			enemy.update(this.target, this.pos,this.enemies);
 		});
+		this.checkBulletCollision(player.bullets);
 	}
 
 	updateTargets() {
 		this.target = {score: 1000, pos: player.pos, building: player};
-		//console.log(this.target.score);
+
 		buildingController.buildings.forEach(building => {
 			let score = Math.sqrt(Math.pow(this.pos.x - building.pos.x, 2) + Math.pow(this.pos.y - building.pos.y, 2));
 			if(score < this.target.score) {
 				this.target = {score: score, pos: building.pos, building: building};
 			}
 		});
+
+		let playerScore = Math.sqrt(Math.pow(this.pos.x - player.pos.x, 2) + Math.pow(this.pos.y - player.pos.y, 2));
+		if(playerScore < this.target.score){
+			this.target = {score: playerScore, pos: player.pos, building: player};
+		}
 	}
+
+	checkBulletCollision(bullets){
+		this.enemies.forEach(e => {
+			for(let i = bullets.length - 1; i >= 0; i--){
+				if(bullets[i].checkCollision(e)){
+					this.enemies.pop(e); //Removes the enemy
+					bullets.splice(i,1); //Destorys the bullet
+					continue;
+				}
+			}
+		});
+	}
+	
 }

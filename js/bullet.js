@@ -39,18 +39,13 @@ class Bullet {
 		return false;
 	}
 
-	checkCollision(enemies,bullets){
-		for(let i = enemies.length - 1; i >= 0; i--){
-			let x = enemies[i].pos.x - this.pos.x;
-			let y = enemies[i].pos.y - this.pos.y;
+	checkCollision(enemy){
+			let x = enemy.pos.x - this.pos.x;
+			let y = enemy.pos.y - this.pos.y;
 			let distance = sqrt(pow(x,2) + pow(y,2));
-			if(distance <= enemies[i].r*2){
-				enemies.splice(i,1);
-				bullets.pop(this);
-				return;
+			if(distance <= enemy.r*2){
+				return true;
 			}
-		}
-		
 	}
 
 }

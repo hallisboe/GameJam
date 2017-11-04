@@ -23,15 +23,6 @@ class BuildingController{
 	}
 
 	checkHealth(){
-		/*this.buildings.forEach(b => {
-			//console.log("No health: " + b.checkHealth());
-			if(b.checkHealth() && b instanceof Miner){
-				console.log("Length before: " + this.buildings.length);
-				this.buildings.pop(b);
-				console.log("Length after: " + this.buildings.length);
-			}
-		});*/
-
 		for(let i = this.buildings.length - 1; i >= 0; i--){
 			if(this.buildings[i].checkHealth() && this.buildings[i] instanceof Miner){
 				this.buildings.splice(i,1);
