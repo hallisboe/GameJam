@@ -15,7 +15,6 @@ class Building{
 		fill(255);
 		stroke(0);
 		strokeWeight(4);
-		rect(this.pos.x,this.pos.y,80,80);
 		rect(this.pos.x,this.pos.y,this.size,this.size);
 		this.drawHealthBar();
 		this.drawGenerateTimer();
@@ -31,10 +30,10 @@ class Building{
 
 	drawGenerateTimer(){
 		fill(0);
-		ellipse(this.pos.x + this.size/2,this.pos.y + this.size/2,50,50);
+		ellipse(this.pos.x + this.size/2,this.pos.y + this.size/2,this.size/2,this.size/2);
 		fill(255);
 		let angle = map(this.curTime,0,this.generateTime,0,360);
-		arc(this.pos.x + this.size/2,this.pos.y + this.size/2,45,45,0,angle,PIE);
+		arc(this.pos.x + this.size/2,this.pos.y + this.size/2,this.size*0.9/2,this.size*0.9/2,0,angle,PIE);
 	}
 
 	generate(){

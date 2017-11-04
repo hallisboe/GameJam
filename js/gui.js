@@ -32,7 +32,7 @@ class GUI{
 		rect(width/2 - w/2 + 10, height - h + 10,20,20);
 		rect(width/2 - w/2 + 10, height - h + 40,20,20);
 		text("Resource 1: " + this.inventory.r1 + "/1000",width/2 - w/2 + 50,height - h +26);
-		text("Resource 2: " + this.inventory.r2 + "/500",width/2 - w/2 + 50,height - h + 52);
+		text("Resource 2: " + this.inventory.r2 + "/500",width/2 - w/2 + 50,height - h + 57);
 	}
 
 	draw(){
