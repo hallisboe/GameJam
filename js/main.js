@@ -14,6 +14,10 @@ let canvas;
 let bg;
 let buildingController;
 
+let isHolding = false;
+let buildOrder;
+const minerPrice = 20;
+
 let width = window.innerWidth
 || document.documentElement.clientWidth
 || document.body.clientWidth;
@@ -23,7 +27,7 @@ let height = window.innerHeight
 || document.body.clientHeight;
 
 function preload(){
-  sprite = loadImage("http://i.imgur.com/fjdKxpe.png");
+  sprite = new Sprites();  //loadImage("http://i.imgur.com/fjdKxpe.png");
 }
 
 
@@ -42,6 +46,7 @@ function setup() {
   buildingController = new BuildingController(inventory);
   buildingController.createMainBuilding({x:200, y:200});
   buildingController.createMiner({x:400,y:600});
+  buildingController.createMiner({x:200,y:800});
   gui = new GUI(inventory);
 }
 
@@ -49,10 +54,20 @@ function draw(){
   background(51);
   updatePixels();
   player.update();
+<<<<<<< HEAD
   player.checkCollision(enemyController.enemies);
   enemyController.update(buildingController.buildings[buildingController.latestBuilding()]); 
+=======
+  player.checkCollision(enemyController.enemies); 
+>>>>>>> 8ba1b8f180b5fbb99864c8046ea6dac7efe4ee7d
   enemyController.update(buildingController.buildings[buildingController.latestBuilding()]);
   buildingController.update();
+
+  //Drawing buildOrder
+  if(isHolding){
+    buildOrder.draw(mouseX,mouseY);
+  }
+
   gui.draw(); //Have to be the last one to draw
 }
 
@@ -84,10 +99,14 @@ function keyReleased(){
 
 function mouseClicked(){
 	player.shoot();
+
+  if(isHolding){
+    buildingController.createMiner(buildOrder.getPos());
+    isHolding = false;
+    inventory.r1 -= minerPrice;
+  }
+  else if(gui.purchaseMiner.isClicked(mouseX,mouseY) && inventory.r1 >= minerPrice){
+    isHolding = true;
+    buildOrder = new BuildOrder(0);
+  }
 }
-
-
-
-
-
-
