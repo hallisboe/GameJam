@@ -24,7 +24,7 @@ let height = window.innerHeight
 || document.body.clientHeight;
 
 function preload(){
-  //sprite = loadImage("http://i.imgur.com/x2OngvR.png");
+  sprite = loadImage("http://i.imgur.com/fjdKxpe.png");
 }
 
 
@@ -52,6 +52,11 @@ function draw(){
   updatePixels();
   player.update();
   player.checkCollision(enemyController.enemies);
+<<<<<<< HEAD
+  enemyController.update(buildingController.buildings[buildingController.latestBuilding()]); 
+  building.draw();
+=======
+>>>>>>> aa55dcbff2524282a9d9830dd4402de0b033628e
   enemyController.update(buildingController.buildings[buildingController.latestBuilding()]);
   buildingController.update();
   gui.draw(); //Have to be the last one to draw
