@@ -106,9 +106,9 @@ function mousePressed(){
   if(isHolding && world.buildingController.isPosAvailable(buildOrder.getPos())){
     world.buildingController.createMiner(buildOrder.getPos());
     isHolding = false;
-    inventory.r1 -= minerPrice;
+    inventory.decreaseResources(minerPrice);
   }
-  else if(!isHolding && gui.purchaseMiner.isClicked(mouseX,mouseY) && inventory.r1 >= minerPrice){
+  else if(!isHolding && gui.purchaseMiner.isClicked(mouseX,mouseY) && inventory.checkResources(minerPrice)){
     isHolding = true;
     buildOrder = new BuildOrder(0);
   }

@@ -8,5 +8,7 @@ class Sprites{
 		this.playerBack = loadImage("http://i.imgur.com/BGe64zl.png");
 		this.world = loadImage("https://i.imgur.com/vb38qP3.png");
 		this.portal = loadImage("http://i.imgur.com/3nyHBOM.png");
+		this.miner = loadImage("https://i.imgur.com/1AwAPLS.png");
+		this.miner2 = loadImage("https://i.imgur.com/MwKbZn4.png");
 	}
 }
