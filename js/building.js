@@ -15,6 +15,7 @@ class Building{
 		fill(255);
 		stroke(0);
 		strokeWeight(4);
+		rect(this.pos.x,this.pos.y,80,80);
 		rect(this.pos.x,this.pos.y,this.size,this.size);
 		this.drawHealthBar();
 		this.drawGenerateTimer();

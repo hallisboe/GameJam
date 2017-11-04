@@ -6,7 +6,7 @@ class Tile {
 	}
 
 	draw() {
-		image(sprite, this.pos.x, this.pos.y);
+		rect(this.pos.x, this.pos.y, 40, 40);
 	}
 
 }

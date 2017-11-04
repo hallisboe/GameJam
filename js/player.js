@@ -35,11 +35,35 @@ class Player{
 		rect(-35, - 35,map(this.health,0,100,0,70),10);
 	}
 
+	getCurrentTile() {
+		return {x: Math.floor(this.pos.x / SCALE), y: Math.floor(this.pos.y / SCALE)};
+	}
+
+	getAdjacentTiles() {
+		let x = this.getCurrentTile().x;
+		let y = this.getCurrentTile().y;
+		return [world.tiles[x + 1][y], world.tiles[x - 1][y], world.tiles[x][y + 1], world.tiles[x][y - 1]]
+	}
+
 	move(){
+		let tile = this.getCurrentTile();
+		let tiles = this.getAdjacentTiles()
 		this.pos.x += this.vel.x*this.movSpeed;
 		this.pos.y += this.vel.y*this.movSpeed;
-		this.pos.x = (this.pos.x >= width)? width : (this.pos.x <= 0)? 0 : this.pos.x;
-		this.pos.y = (this.pos.y >= height)? height : (this.pos.y <= 0)? 0 : this.pos.y;
+		console.log(tiles)
+
+		if(tiles[0] == 2) {
+			this.pos.x = Math.min((tile.x + 1) * SCALE - 1, this.pos.x);
+		}
+		if(tiles[1] == 2) {
+			this.pos.x = Math.max(tile.x * SCALE + 1, this.pos.x);
+		}
+		if(tiles[2] == 2) {
+			this.pos.y = Math.min((tile.y + 1) * SCALE - 1, this.pos.y);
+		}
+		if(tiles[3] == 2) {
+			this.pos.y = Math.max(tile.y * SCALE + 1, this.pos.y);
+		}
 	}
 
 	lookAt(){

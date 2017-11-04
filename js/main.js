@@ -9,7 +9,7 @@ let sprites;
 let inventory;
 let gui;
 let sprite;
-const SCALE = 50;
+const SCALE = 40;
 const enemyLimit = 10;
 let canvas;
 let bg;
@@ -24,7 +24,7 @@ let height = window.innerHeight
 || document.body.clientHeight;
 
 function preload(){
-  sprite = loadImage("http://i.imgur.com/x2OngvR.png");
+  //sprite = loadImage("http://i.imgur.com/x2OngvR.png");
 }
 
 
@@ -35,10 +35,10 @@ function setup() {
   angleMode(DEGREES);
 
   world = new World();
-  player = new Player({x: width/2, y: height/2});
+  player = new Player({x: 100, y: 100});
   enemyController = new EnemyController(enemyLimit);
   world.draw();
-  loadPixels();
+  loadPixels(); // EDDFA
   inventory = new Inventory();
   buildingController = new BuildingController(inventory);
   buildingController.createMainBuilding({x:200, y:200});
@@ -51,9 +51,14 @@ function draw(){
   updatePixels();
   player.update();
   player.checkCollision(enemyController.enemies);
+<<<<<<< HEAD
   enemyController.update(buildingController.buildings[buildingController.latestBuilding()]); 
+=======
+  enemyController.update(building);
+  building.draw();
+  enemyController.update(buildingController.buildings[buildingController.latestBuilding()]);
+>>>>>>> 4a67f6abbc13226ddc9065b6c2d2189246ae0f2c
   buildingController.update();
-
   gui.draw(); //Have to be the last one to draw
 }
 
