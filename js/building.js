@@ -10,6 +10,14 @@ class Building{
 		stroke(0);
 		strokeWeight(4);
 		rect(this.pos.x,this.pos.y,100,100);
+		this.drawHealthBar();
+	}
+
+	drawHealthBar(){
+		fill(255,0,0);
+		rect(this.pos.x - 10, this.pos.y - 15,120,10);
+		fill(0,255,0);
+		rect(this.pos.x - 10, this.pos.y - 15,map(this.health,0,100,0,120),10);
 	}
 
 	update(){

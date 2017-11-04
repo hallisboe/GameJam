@@ -11,8 +11,9 @@ class Player{
 
 	draw(){
 		push();
-		fill(255,100,188);
 		translate(this.pos.x,this.pos.y,this.size,this.size*2);
+		this.drawHealthBar();
+		fill(255,100,188);
 		rotate(this.rotation);
 		rect(-this.size/2,-this.size,this.size,this.size*2);
 		pop();
@@ -25,6 +26,13 @@ class Player{
 			this.bullets[i].update();
 			this.bullets[i].draw();
 		}
+	}
+
+	drawHealthBar(){
+		fill(255,0,0);
+		rect(-35,- 35,70,10);
+		fill(0,255,0);
+		rect(-35, - 35,map(this.health,0,100,0,70),10);
 	}
 
 	move(){
@@ -55,7 +63,6 @@ class Player{
 	}
 
 	reduceHealth(){
-		this.health -= 1;
-		console.log("Health: " + this.health);
+		this.health = (this.health <= 0)? 0 : this.health -= 1;
 	}
 }
