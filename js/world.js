@@ -1,9 +1,9 @@
 class World {
 
 	constructor(invetory,type){
-	  	this.tiles = this.loadWorld();
+	  	this.tiles = (type === 0)? this.loadWorld() : this.loadWorld2();
 	  	this.buildingController = new BuildingController(invetory);
-	  	this.buildingController.createMainBuilding({x:width/2 + 160, y:height/2});
+	  	this.buildingController.createMainBuilding({x:width/2 + 160, y:height/2},type);
 	  	let basePos = this.buildingController.buildings[0].pos;
 	  	this.portalPos = {x: basePos.x + 50, y: basePos.y + 50};
 	  	this.type = type;
@@ -14,7 +14,7 @@ class World {
 			image(sprite.world, 0, 0);
 		}
 		else {
-			image(sprite.world, 0, 0);
+			image(sprite.world2, 0, 0);
 		}
         // for(let x = 0; x < this.tiles.length; x++) {
         //     for(let y = 0; y < this.tiles[0].length; y++) {

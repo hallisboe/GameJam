@@ -18,8 +18,8 @@ class BuildingController{
 		this.buildings.push(new Miner(pos,this.inventory));
 	}
 
-	createMainBuilding(pos){
-		this.buildings.push(new Base(pos,this.inventory));
+	createMainBuilding(pos,type){
+		this.buildings.push(new Base(pos,this.inventory,type));
 	}
 
 	createTurret(pos){
