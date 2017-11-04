@@ -43,7 +43,7 @@ function setup() {
   angleMode(DEGREES);
 
   world = new World();
-  player = new Player({x: 100, y: 100});
+  player = new Player({x: 300, y: 300});
   world.draw();
   loadPixels(); // EDDFA
   inventory = new Inventory();
