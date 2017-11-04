@@ -38,7 +38,6 @@ class BuildingController{
 				return;
 			}
 		});
-		console.log("Is available: " + isAvailable);
 		return isAvailable;
 	}
 
