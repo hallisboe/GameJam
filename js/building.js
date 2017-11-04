@@ -10,7 +10,7 @@ class Building{
 		fill(255);
 		stroke(0);
 		strokeWeight(4);
-		rect(this.pos.x,this.pos.y,100,100);
+		rect(this.pos.x,this.pos.y,80,80);
 		this.drawHealthBar();
 		pop();
 	}

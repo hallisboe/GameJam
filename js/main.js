@@ -9,7 +9,7 @@ let sprites;
 let inventory;
 let gui;
 let sprite;
-const SCALE = 50;
+const SCALE = 40;
 const enemyLimit = 10;
 let canvas;
 let bg;
@@ -24,7 +24,7 @@ let height = window.innerHeight
 || document.body.clientHeight;
 
 function preload(){
-  sprite = loadImage("http://i.imgur.com/x2OngvR.png");
+  //sprite = loadImage("http://i.imgur.com/x2OngvR.png");
 }
 
 
@@ -35,7 +35,7 @@ function setup() {
   angleMode(DEGREES);
 
   world = new World();
-  player = new Player({x: width/2, y: height/2});
+  player = new Player({x: 100, y: 100});
   enemyController = new EnemyController(enemyLimit);
   world.draw();
   loadPixels();
@@ -51,7 +51,7 @@ function draw(){
   player.checkCollision(enemyController.enemies);
   enemyController.update(building);
   building.draw();
-
+  console.log(player.getCurrentTile())
   gui.draw(); //Have to be the last one to draw
 }
 
