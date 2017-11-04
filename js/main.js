@@ -3,6 +3,8 @@
 
 
 let world;
+let world2;
+let tempWorld;
 let player;
 let enemyController;
 let sprite;
@@ -13,7 +15,6 @@ let swarms;
 
 let canvas;
 let bg;
-let buildingController;
 
 const SCALE = 40;
 const enemyLimit = 10;
@@ -42,24 +43,23 @@ function setup() {
   cursor(CROSS);
   angleMode(DEGREES);
 
-  world = new World();
-  player = new Player({x: 300, y: 300});
+  inventory = new Inventory();
+  world = new World(inventory,0); //Current world
+  world2 = new World(inventory,1); //The other world
+  player = new Player({x: width/2, y: height/2});
   world.draw();
   loadPixels(); // EDDFA
-  inventory = new Inventory();
-  buildingController = new BuildingController(inventory);
-  buildingController.createMainBuilding({x:200, y:200});
-  buildingController.createMiner({x:400,y:600});
-  buildingController.createMiner({x:200,y:800});
   gui = new GUI(inventory);
-    swarms = [new Swarm(), new Swarm()];
+  swarms = [new Swarm(), new Swarm()];
 }
 
 function draw(){
   background(51);
   updatePixels();
+  world.drawComps();
   player.update();
-  buildingController.update();
+  world.update(); //Generate resources in world 1
+  world2.update(); //Generate resources in world 2
   swarms.forEach(swarm => swarm.update());
   //Drawing buildOrder
   if(isHolding){
@@ -93,13 +93,16 @@ function keyReleased(){
   else if(keyCode === 65 || keyCode === 68){
   	player.vel.x = 0;
   }
+  else{
+    changeWorld();
+  }
 }
 
 function mousePressed(){
 	player.shoot();
 
-  if(isHolding && buildingController.isPosAvailable(buildOrder.getPos())){
-    buildingController.createMiner(buildOrder.getPos());
+  if(isHolding && world.buildingController.isPosAvailable(buildOrder.getPos())){
+    world.buildingController.createMiner(buildOrder.getPos());
     isHolding = false;
     inventory.r1 -= minerPrice;
   }
@@ -107,4 +110,11 @@ function mousePressed(){
     isHolding = true;
     buildOrder = new BuildOrder(0);
   }
+}
+
+function changeWorld(){
+  let temp = world;
+  world = world2;
+  world2 = temp;
+  console.log("Changed World");
 }

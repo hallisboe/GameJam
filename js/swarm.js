@@ -3,7 +3,7 @@ class Swarm {
 	constructor() {
 		this.size = 20;
 		this.pos = {x: 1000, y:1000};
-		this.target = {score: 1000, pos: {x: 0, y: 0}, building: buildingController.buildings[0]};
+		this.target = {score: 1000, pos: {x: 0, y: 0}, building: world.buildingController.buildings[0]};
 		this.enemies = [];
 		this.vel = {x: 0, y: 0};
 		this.speed = 1;
@@ -35,7 +35,7 @@ class Swarm {
 	updateTargets() {
 		this.target = {score: 1000, pos: player.pos, building: player};
 
-		buildingController.buildings.forEach(building => {
+		world.buildingController.buildings.forEach(building => {
 			let score = Math.sqrt(Math.pow(this.pos.x - building.pos.x, 2) + Math.pow(this.pos.y - building.pos.y, 2));
 			if(score < this.target.score) {
 				this.target = {score: score, pos: building.pos, building: building};

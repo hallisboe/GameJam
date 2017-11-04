@@ -6,8 +6,12 @@ class BuildingController{
 	}
 
 	update(){
-		this.buildings.forEach(b => b.update()); //Generate resources and draw
+		this.buildings.forEach(b => b.generate()); //Generate resources and draw
 		this.checkHealth(); //Check health
+	}
+
+	draw(){
+		this.buildings.forEach(b => b.draw());
 	}
 
 	createMiner(pos){
