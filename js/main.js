@@ -51,12 +51,7 @@ function draw(){
   background(51);
   updatePixels();
   player.update();
-  player.checkCollision(enemyController.enemies);
-<<<<<<< HEAD
-  enemyController.update(buildingController.buildings[buildingController.latestBuilding()]); 
-  building.draw();
-=======
->>>>>>> aa55dcbff2524282a9d9830dd4402de0b033628e
+  player.checkCollision(enemyController.enemies); 
   enemyController.update(buildingController.buildings[buildingController.latestBuilding()]);
   buildingController.update();
   gui.draw(); //Have to be the last one to draw
