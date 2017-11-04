@@ -5,10 +5,9 @@
 let world;
 let player;
 let enemyController;
-let sprites;
+let sprite;
 let inventory;
 let gui;
-let sprite;
 const SCALE = 40;
 const enemyLimit = 10;
 let canvas;
@@ -51,11 +50,7 @@ function draw(){
   updatePixels();
   player.update();
   player.checkCollision(enemyController.enemies);
-<<<<<<< HEAD
   enemyController.update(buildingController.buildings[buildingController.latestBuilding()]); 
-  building.draw();
-=======
->>>>>>> aa55dcbff2524282a9d9830dd4402de0b033628e
   enemyController.update(buildingController.buildings[buildingController.latestBuilding()]);
   buildingController.update();
   gui.draw(); //Have to be the last one to draw
