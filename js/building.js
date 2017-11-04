@@ -36,6 +36,14 @@ class Building{
 		arc(this.pos.x + this.size/2,this.pos.y + this.size/2,this.size*0.9/2,this.size*0.9/2,0,angle,PIE);
 	}
 
+	drawBaseGenerateTimer(){
+		fill(0);
+		ellipse(this.pos.x + this.size/2,this.pos.y + this.size/6,this.size/5,this.size/5);
+		fill(255);
+		let angle = map(this.curTime,0,this.generateTime,0,360);
+		arc(this.pos.x + this.size/2,this.pos.y + this.size/6,this.size*0.9/5,this.size*0.9/5,0,angle,PIE);
+	}
+
 	generate(){
 		this.curTime = millis() - this.startMillies
 		if(this.curTime >= this.generateTime){
