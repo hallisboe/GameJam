@@ -6,9 +6,6 @@ class Sprites{
 		this.playerRight = loadImage("http://i.imgur.com/Z8U1FJ2.png");
 		this.playerFront = loadImage("http://i.imgur.com/iHTCY7t.png");
 		this.playerBack = loadImage("http://i.imgur.com/BGe64zl.png");
-		console.log(this.playerBack);
-		console.log(this.playerFront);
-		console.log(this.playerLeft);
-		console.log(this.playerRight);
+		this.world = loadImage("http://i.imgur.com/19tDjY7.png");
 	}
 }
