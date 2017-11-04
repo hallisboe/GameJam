@@ -39,8 +39,8 @@ function setup() {
   enemyController = new EnemyController(enemyLimit);
   world.draw();
   loadPixels();
-  building = new Building({x: 200, y: 200});
   inventory = new Inventory();
+  building = new Building({x: 200, y: 200},inventory);
   gui = new GUI(inventory);
 }
 
@@ -50,7 +50,7 @@ function draw(){
   player.update();
   player.checkCollision(enemyController.enemies);
   enemyController.update(building);
-  building.draw();
+  building.update();
 
   gui.draw(); //Have to be the last one to draw
 }
