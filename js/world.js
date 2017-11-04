@@ -15,7 +15,6 @@ class World {
   	}
 
 	draw(){
-		fill(255);
 		this.tiles.forEach(tile => tile.draw());
 	}
 

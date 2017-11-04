@@ -5,10 +5,11 @@
 let world;
 let player;
 let enemyController;
-let sprites;
+let sprite;
 const SCALE = 50;
 const enemyLimit = 10;
-
+let canvas;
+let bg;
 
 let width = window.innerWidth
 || document.documentElement.clientWidth
@@ -19,7 +20,7 @@ let height = window.innerHeight
 || document.body.clientHeight;
 
 function preload(){
-  sprites = new Sprites();
+  sprite = loadImage("http://i.imgur.com/x2OngvR.png");
 }
 
 
@@ -32,11 +33,13 @@ function setup() {
   world = new World();
   player = new Player({x: width/2, y: height/2});
   enemyController = new EnemyController(enemyLimit);
+  world.draw();
+  loadPixels();
 }
 
 function draw(){
   background(51);
-  world.draw();
+  updatePixels();
   player.update();
   player.checkCollision(enemyController.enemies);
   enemyController.update(player.pos);
