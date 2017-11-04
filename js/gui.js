@@ -22,7 +22,7 @@ class GUI{
 	}
 
 	drawBottomBar(){
-		let w = 250;
+		let w = 300;
 		let h = 75;
 
 		fill(255,153,51);
