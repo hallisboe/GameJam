@@ -2,6 +2,8 @@ class GUI{
 
 	constructor(inventory){
 		this.inventory = inventory;
+		this.purchaseMiner = new Button({x: 70, y: height - 70});
+		this.purchaseTurret = new Button({x: width - 60, y: height - 70});
 	}
 
 	drawTopBar(){
@@ -37,43 +39,12 @@ class GUI{
 		text("Resource 2: " + this.inventory.r2 + "/500",width/2 - w/2 + 50,height - h + 57);
 	}
 
-	drawMinerButton(){
-		let w = 100;
-		let h = 100;
-
-		fill(255);
-		ellipse(w*0.7,height - h*0.7,w,h);
-		fill(255,153,51);
-		ellipse(w*0.7,height - h*0.7,w*0.9,h*0.9);
-
-		//Drawing Miner sprite
-		fill(255);
-		let rw = w/2;
-		let rh = h/2;
-		rect(w*0.7-rw/2,height - h*0.7 - rh/2,rw,rh);
-	}
-
-	drawTurretButton(){
-		let w = 100;
-		let h = 100;
-
-		fill(255);
-		ellipse(width-w*0.7,height - h*0.7,w,h);
-		fill(255,153,51);
-		ellipse(width-w*0.7,height - h*0.7,w*0.9,h*0.9);
-
-		//Drawing Miner sprite
-		fill(51);
-		let rw = w/2;
-		let rh = h/3;
-		rect(width-w*0.7-rw/2,height - h*0.7 - rh/2,rw,rh);
-	}
 
 	draw(){
 		this.drawTopBar();
 		this.drawBottomBar();
-		this.drawMinerButton();
-		this.drawTurretButton();
+		this.purchaseMiner.drawMiner();
+		this.purchaseTurret.drawTurret();
 	}
 
 

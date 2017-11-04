@@ -15,6 +15,10 @@ let canvas;
 let bg;
 let buildingController;
 
+let isHolding = false;
+let buildOrder;
+const minerPrice = 20;
+
 let width = window.innerWidth
 || document.documentElement.clientWidth
 || document.body.clientWidth;
@@ -54,6 +58,12 @@ function draw(){
   player.checkCollision(enemyController.enemies); 
   enemyController.update(buildingController.buildings[buildingController.latestBuilding()]);
   buildingController.update();
+
+  //Drawing buildOrder
+  if(isHolding){
+    buildOrder.draw(mouseX,mouseY);
+  }
+
   gui.draw(); //Have to be the last one to draw
 }
 
@@ -85,6 +95,16 @@ function keyReleased(){
 
 function mouseClicked(){
 	player.shoot();
+
+  if(isHolding){
+    buildingController.createMiner(buildOrder.getPos());
+    isHolding = false;
+    inventory.r1 -= minerPrice;
+  }
+  else if(gui.purchaseMiner.isClicked(mouseX,mouseY) && inventory.r1 >= minerPrice){
+    isHolding = true;
+    buildOrder = new BuildOrder(0);
+  }
 }
 
 

@@ -50,7 +50,7 @@ class Player{
 		let tiles = this.getAdjacentTiles()
 		this.pos.x += this.vel.x*this.movSpeed;
 		this.pos.y += this.vel.y*this.movSpeed;
-		console.log(tiles)
+		//console.log(tiles)
 
 		if(tiles[0] == 2) {
 			this.pos.x = Math.min((tile.x + 1) * SCALE - 1, this.pos.x);
