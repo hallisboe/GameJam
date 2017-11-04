@@ -38,7 +38,7 @@ function setup() {
   player = new Player({x: 100, y: 100});
   enemyController = new EnemyController(enemyLimit);
   world.draw();
-  loadPixels();
+  loadPixels(); // EDDFA
   inventory = new Inventory();
   buildingController = new BuildingController(inventory);
   buildingController.createMainBuilding({x:200, y:200});
