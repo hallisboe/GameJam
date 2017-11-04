@@ -8,15 +8,20 @@ let enemyController;
 let sprite;
 let inventory;
 let gui;
-const SCALE = 40;
-const enemyLimit = 10;
+
+let swarms;
+
 let canvas;
 let bg;
 let buildingController;
 
+const SCALE = 40;
+const enemyLimit = 10;
+const minerPrice = 20;
+
 let isHolding = false;
 let buildOrder;
-const minerPrice = 20;
+
 
 let width = window.innerWidth
 || document.documentElement.clientWidth
@@ -39,7 +44,6 @@ function setup() {
 
   world = new World();
   player = new Player({x: 100, y: 100});
-  enemyController = new EnemyController(enemyLimit);
   world.draw();
   loadPixels(); // EDDFA
   inventory = new Inventory();
@@ -48,18 +52,15 @@ function setup() {
   buildingController.createMiner({x:400,y:600});
   buildingController.createMiner({x:200,y:800});
   gui = new GUI(inventory);
+    swarms = [new Swarm(), new Swarm()];
 }
 
 function draw(){
   background(51);
   updatePixels();
   player.update();
-  player.checkCollision(enemyController.enemies);
-  enemyController.update(buildingController.buildings[buildingController.latestBuilding()]); 
-  player.checkCollision(enemyController.enemies); 
-  enemyController.update(buildingController.buildings[buildingController.latestBuilding()]);
   buildingController.update();
-
+  swarms.forEach(swarm => swarm.update());
   //Drawing buildOrder
   if(isHolding){
     buildOrder.draw(mouseX,mouseY);
