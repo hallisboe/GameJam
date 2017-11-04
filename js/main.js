@@ -43,6 +43,7 @@ function setup() {
   buildingController = new BuildingController(inventory);
   buildingController.createMainBuilding({x:200, y:200});
   buildingController.createMiner({x:400,y:600});
+  buildingController.createMiner({x:200,y:800});
   gui = new GUI(inventory);
 }
 
