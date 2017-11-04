@@ -13,7 +13,7 @@ const SCALE = 50;
 const enemyLimit = 10;
 let canvas;
 let bg;
-let building;
+let buildingController;
 
 let width = window.innerWidth
 || document.documentElement.clientWidth
@@ -40,7 +40,9 @@ function setup() {
   world.draw();
   loadPixels();
   inventory = new Inventory();
-  building = new Building({x: 200, y: 200},inventory);
+  buildingController = new BuildingController(inventory);
+  buildingController.createMainBuilding({x:200, y:200});
+  buildingController.createMiner({x:400,y:600});
   gui = new GUI(inventory);
 }
 
@@ -49,8 +51,8 @@ function draw(){
   updatePixels();
   player.update();
   player.checkCollision(enemyController.enemies);
-  enemyController.update(building);
-  building.update();
+  enemyController.update(buildingController.buildings[buildingController.latestBuilding()]);
+  buildingController.update();
 
   gui.draw(); //Have to be the last one to draw
 }

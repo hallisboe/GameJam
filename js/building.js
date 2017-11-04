@@ -1,11 +1,12 @@
 class Building{
 
-	constructor(pos,inventory){
+	constructor(pos,inventory,size,generateTime,startHealth){
 		this.pos = pos;
-		this.health = 1000;
-		this.generateTime = 1000; //millis
+		this.startHealth = startHealth;
+		this.health = startHealth;
+		this.generateTime = generateTime; //millis
 		this.startMillies = millis();
-		this.size = 100;
+		this.size = size;
 		this.curTime = 0;
 	}
 
@@ -24,14 +25,13 @@ class Building{
 		fill(255,0,0);
 		rect(this.pos.x - 10, this.pos.y - 15,this.size + 20,10);
 		fill(0,255,0);
-		rect(this.pos.x - 10, this.pos.y - 15,map(this.health,0,1000,0,this.size + 20),10);
+		rect(this.pos.x - 10, this.pos.y - 15,map(this.health,0,this.startHealth,0,this.size + 20),10);
 	}
 
 	drawGenerateTimer(){
 		fill(0);
 		ellipse(this.pos.x + this.size/2,this.pos.y + this.size/2,50,50);
 		fill(255);
-		//arc(this.pos.x + this.size/2, this.pos.y + this.size/2, 45, 45, 0, map(this.curTime,0,this.generate,0,2*PI), PIE);
 		let angle = map(this.curTime,0,this.generateTime,0,360);
 		arc(this.pos.x + this.size/2,this.pos.y + this.size/2,45,45,0,angle,PIE);
 	}
@@ -54,6 +54,6 @@ class Building{
 	}
 
 	checkHealth(){
-		return (health <= 0)? true : false;
+		return (this.health <= 0)? true : false;
 	}
 }
