@@ -41,7 +41,7 @@ function draw(){
   world.draw();
   player.update();
   player.checkCollision(enemyController.enemies);
-  enemyController.update(player);
+  enemyController.update(building);
   building.draw();
 }
 
