@@ -13,30 +13,45 @@ class GUI{
 		fill(255,153,51);
 		rect(0,0,width,barHeight);
 
+		strokeWeight(0);
+
 		//Resource 1 Icon
 		fill(255);
-		rect(25,barHeight/2 - 10,20,20);
+		image(sprite.r1,25,barHeight/2 -10);
 		//REsource 1 CountText
 		fill(0);
 		textStyle(BOLD);
 		textSize(20);
-		text(inventory.r1,50,barHeight/2 + 7);
+		text(inventory.r1,55,barHeight/2 + 7);
+
+		//Resource 2 Icon
+		fill(255);
+		image(sprite.r2,90,barHeight/2 -15);
+		//REsource 2 CountText
+		fill(0);
+		textStyle(BOLD);
+		textSize(20);
+		text(inventory.r2,115,barHeight/2 + 7);
 	}
 
 	drawBottomBar(){
 		let w = 300;
 		let h = 75;
 
+		stroke(0);
+		strokeWeight(3);
 		fill(255,153,51);
 		rect(width/2 - w/2,height - h,w,h);
 
 		fill(255);
-		rect(width/2 - w/2 + 10, height - h + 10,20,20);
-		rect(width/2 - w/2 + 10, height - h + 40,20,20);
-		fill(200,0,0);
-		text("Resource 1: " + this.inventory.r1 + "/" + gameController.r1Goal,width/2 - w/2 + 50,height - h +26);
-		fill(0,0,200);
-		text("Resource 2: " + this.inventory.r2 + "/" + gameController.r2Goal,width/2 - w/2 + 50,height - h + 57);
+		image(sprite.r1,width/2 - w/2 + 40,height - h + 10);
+		image(sprite.r2,width/2 - w/2 + 40,height - h + 40);
+		stroke(0);
+		strokeWeight(3);
+		fill(0,240,0);
+		text("Resource 1: " + this.inventory.r1 + "/" + gameController.r1Goal,width/2 - w/2 + 80,height - h +26);
+		fill(230,0,230);
+		text("Resource 2: " + this.inventory.r2 + "/" + gameController.r2Goal,width/2 - w/2 + 80,height - h + 63);
 	}
 
 
