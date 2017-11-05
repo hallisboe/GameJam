@@ -6,11 +6,13 @@ class SwarmController {
 
 	update() {
 		// Spawn new swarm
-		
-	}
-
-	draw() {
-
+		if(Math.random() > 0.01) {
+			swarms.push(new Swarm());
+		}
+		// Anders er sykt casual hihihi
+		this.swarms.forEach(swarm => {
+			swarm.update();
+		}); 
 	}
 
 }

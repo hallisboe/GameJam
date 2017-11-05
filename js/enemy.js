@@ -31,4 +31,5 @@ class Enemy {
 		this.draw();
 	}
 
+
 }

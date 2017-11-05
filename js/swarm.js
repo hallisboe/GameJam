@@ -7,6 +7,7 @@ class Swarm {
 		this.enemies = [];
 		this.vel = {x: 0, y: 0};
 		this.speed = 1;
+		this.world = Math.round(Math.random());
 		this.minDistance = 10;
 		for(let i = 0; i < 10; i++) {
 			let startPos = {x: this.pos.x+(i-5)*60 - 400, y: this.pos.y-(i-5)*60 - 400};
@@ -52,8 +53,8 @@ class Swarm {
 		this.enemies.forEach(e => {
 			for(let i = bullets.length - 1; i >= 0; i--){
 				if(bullets[i].checkCollision(e)){
-					this.enemies.pop(e); //Removes the enemy
-					bullets.splice(i,1); //Destorys the bullet
+					this.enemies.pop(e); 
+					bullets.splice(i,1); 
 					continue;
 				}
 			}
