@@ -2,11 +2,11 @@ class Swarm {
 
 	constructor() {
 		this.size = 20;
-		this.pos = {x: 1000, y:1000};
+		this.pos = Math.random() < 0.5 ? {x: Math.round(Math.random()) * 1920, y:Math.round(Math.random() * 1080)} : {x: Math.round(Math.random() * 1920), y:Math.round(Math.random()) * 1080};
 		this.target = {score: 1000, pos: {x: 0, y: 0}, building: world.buildingController.buildings[0]};
 		this.enemies = [];
 		this.vel = {x: 0, y: 0};
-		this.speed = 1;
+		this.speed = 3;
 		this.world = Math.round(Math.random());
 		this.minDistance = 10;
 		for(let i = 0; i < 10; i++) {

@@ -6,13 +6,14 @@ class SwarmController {
 
 	update() {
 		// Spawn new swarm
-		if(Math.random() < 0.02) { 
+		if(Math.random() < 0.002 && this.swarms.length < 10) { 
 			this.swarms.push(new Swarm());
 		}
-		console.log(this.swarms)
+		//console.log(this.swarms)
 		// Anders er sykt casual hihihi
 		this.swarms.forEach(swarm => {
 			swarm.update();
+			if(swarm.enemies.length == 0) swarms.pop(swarm);
 		}); 
 	}
 
