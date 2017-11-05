@@ -24,12 +24,12 @@ let fTheme = true;
 const SCALE = 40;
 const enemyLimit = 10;
 const minerPrice = 15;
-const turretPrice = 100;
+const turretPrice = 75;
 
 let isHolding = false;
 let buildOrder;
 
-let swarmCount = 10;
+let swarmCount = 2;
 let swarmSpawnChance = 0.0013;
 
 let isShooting = false;
