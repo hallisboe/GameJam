@@ -22,11 +22,11 @@ class World {
 	drawComps(){
 		this.buildingController.draw();
         this.swarmController.draw();
+        this.swarmController.update();
 	}
 
 	update(){
 		this.buildingController.update();
-        this.swarmController.update();
 	}
 
 	loadWorld(){

@@ -28,6 +28,7 @@ class Turret {
 		}
 		
 		pop();
+		this.update();
 	}
 
 	drawHealthBar(){
@@ -64,8 +65,8 @@ class Turret {
 
 	generate(){
 		this.curCD = millis() - this.startMillis;
-		console.log("CurCD: " + this.curCD);
-		this.update();
+		//console.log("CurCD: " + this.curCD);
+		//this.update();
 	}
 
 	reduceHealth(){
@@ -81,16 +82,17 @@ class Turret {
 		if(this.curCD >= this.CD){
 			this.startMillies = millis();
 			//console.log("Should be 0: " + (this.curCD - this.startMillies));
-			let velX = cos(this.rotation);
-			let velY = sin(this.rotation);
-			let vel = {x: velX, y: velY};
+			let velX = ((target.pos.x - target.r) - (this.pos.x + this.size/2));
+			let velY = ((target.pos.y - target.r) - (this.pos.y + this.size/2));
+			let magnitude = sqrt(pow(velX,2) + pow(velY,2));
+			let vel = {x: velX/magnitude, y: velY/magnitude};
 			let pos = {x: this.pos.x + this.size/2, y: this.pos.y + this.size/2};
 			player.bullets.push(new Bullet(pos,vel));
 		} 
 	}
 
 	lookAt(target){
-		this.rotation = atan2((target.pos.y - this.pos.y),(target.pos.x - this.pos.x)) + 90;
-		console.log("Rotation: " + rotation);
+		this.rotation = atan2((target.pos.y - target.r - this.pos.y),(target.pos.x - target.r - this.pos.x)) + 90;
+		console.log("Rotation: " + this.rotation);
 	}
 }

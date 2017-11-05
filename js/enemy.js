@@ -9,11 +9,11 @@ class Enemy {
 		this.attackRate = 5;
 		this.attackElapsed = 0;
 	}
-
+	//(Math.random() - 0.5) * 50
 	draw(){
 		fill(0);
 		// Anders er til tider ikke morsom, veldig ikke morsom #shootsfired
-		ellipse(this.pos.x - this.r + (Math.random() - 0.5) * 50, this.pos.y - this.r + (Math.random() - 0.5) * 50,this.r*2,this.r*2);
+		ellipse(this.pos.x - this.r, this.pos.y - this.r,this.r*2,this.r*2);
 	}
 
 	attack(target){
