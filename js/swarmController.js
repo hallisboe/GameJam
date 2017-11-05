@@ -6,7 +6,7 @@ class SwarmController {
 
 	update() {
 		// Spawn new swarm
-		if(Math.random() < 0.005) {
+		if(Math.random() < 0.005) { 
 			swarms.push(new Swarm());
 		}
 		// Anders er sykt casual hihihi
