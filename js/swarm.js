@@ -17,7 +17,6 @@ class Swarm {
 
 	update() {
 		this.updateTargets();
-
 		if(abs(this.target.pos.x - this.pos.x) >= this.minDistance || abs(this.target.pos.y - this.pos.y) >= this.minDistance){
 			let x = this.target.pos.x - this.pos.x;
 			let y = this.target.pos.y - this.pos.y;
@@ -35,7 +34,6 @@ class Swarm {
 
 	updateTargets() {
 		this.target = {score: 1000, pos: player.pos, building: player};
-
 		world.buildingController.buildings.forEach(building => {
 			let score = Math.sqrt(Math.pow(this.pos.x - building.pos.x, 2) + Math.pow(this.pos.y - building.pos.y, 2));
 			if(score < this.target.score) {
