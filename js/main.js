@@ -1,7 +1,7 @@
 "use strict";
 
 
-
+let gameController;
 let world;
 let world2;
 let theme_world1;
@@ -57,9 +57,19 @@ function setup() {
   loadPixels(); // EDDFA
   gui = new GUI(inventory);
   swarms = [new Swarm(), new Swarm()];
+  gameController = new GameController();
 }
 
 function draw(){
+  if(gameController.checkGameStatus()){
+    gui.drawWinScreen();
+    return;
+  }
+  else if(gameController.checkGameLost()){
+    gui.drawEndScreen();
+    return;
+  }
+
   background(51);
   updatePixels();
   world.drawComps();
