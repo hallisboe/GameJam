@@ -47,6 +47,20 @@ class GUI{
 		this.purchaseTurret.drawTurret();
 	}
 
+	drawEndScreen(){
+		push();
+		translate(width/2,height/2);
+		let w = 600;
+		let h = 300;
+
+		stroke(0);
+		strokeWeight(4);
+		fill(255,153,51);
+		rect(-w/2,-h/2,w,h);
+		fill(0);
+		text("GAME OVER",-10,-h/2 + 20);
+	}
+
 
 
 }
