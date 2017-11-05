@@ -80,6 +80,6 @@ class Turret {
 	}
 
 	lookAt(target){
-		this.rotation = -atan((target.pos.x - this.pos.x - this.size/2)/(target.pos.y - this.pos.y + this.size/2));
+		this.rotation = -atan2((target.pos.y - this.pos.y + this.size/2)/(target.pos.x - this.pos.x - this.size/2));
 	}
 }

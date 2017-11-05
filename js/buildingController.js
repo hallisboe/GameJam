@@ -28,7 +28,7 @@ class BuildingController{
 
 	checkHealth(){
 		for(let i = this.buildings.length - 1; i >= 0; i--){
-			if(this.buildings[i].checkHealth() && this.buildings[i] instanceof Miner){
+			if(this.buildings[i].checkHealth() && (this.buildings[i] instanceof Miner || this.buildings[i] instanceof Turret)){
 				this.buildings.splice(i,1);
 			}
 		}
