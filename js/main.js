@@ -127,11 +127,19 @@ function keyPressed(){
         isHolding = true;
         buildOrder = new BuildOrder(0);
     }
+    else{
+      buildOrder = null;
+      isHolding = false;
+    }
   }
   else if(keyCode === 69){
     if(!isHolding && inventory.checkResources(turretPrice)){
         isHolding = true;
         buildOrder = new BuildOrder(1);
+    }
+    else{
+      buildOrder = null;
+      isHolding = false;
     }
   }
 }

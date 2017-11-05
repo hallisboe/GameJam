@@ -18,7 +18,7 @@ class BuildOrder{
 			rect(this.pos.x*SCALE,this.pos.y*SCALE,40,40);
 			fill(51,51,51,30);
 			stroke(0,0,0,30);
-			ellipse(this.pos.x*SCALE + 20,this.pos.y*SCALE + 20,300,300);
+			ellipse(this.pos.x*SCALE + 20,this.pos.y*SCALE + 20,450,450);
 		}
 	}
 
