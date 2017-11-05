@@ -1,20 +1,22 @@
 class Swarm {
 
 	constructor(type) {
+
 		this.size = 10;
+		this.type = type;
 		this.pos = Math.random() < 0.5 ? {x: Math.round(Math.random()) * 1920, y:Math.round(Math.random() * 1080)} : {x: Math.round(Math.random() * 1920), y:Math.round(Math.random()) * 1080};
-		let wrld = (type == 0)? world : world2;
-		this.target = {score: 1000, pos: wrld.buildingController.buildings[0].pos, building: wrld.buildingController.buildings[0]};
+		console.log("Type: " + this.type);
+		this.wrld = (this.type === world.type)? world : world2;
+		this.target = {score: 1000, pos: this.wrld.buildingController.buildings[0].pos, building: this.wrld.buildingController.buildings[0]};
 		this.enemies = [];
 		this.vel = {x: 0, y: 0};
-		this.speed = 2.5;
+		this.speed = 1.9;
 		this.world = Math.round(Math.random());
 		this.minDistance = 10;
 		for(let i = 0; i < 10; i++) {
 			let startPos = {x: this.pos.x+(i-5)*60 - 400, y: this.pos.y-(i-5)*60 - 400};
 			this.enemies.push(new Enemy(startPos));
 		}
-		this.type = type;
 		this.startTarget = this.target;
 	}
 
@@ -29,13 +31,15 @@ class Swarm {
 			this.pos.y += this.vel.y;
 			this.pos.x += this.vel.x;
 		}
+
 		this.enemies.forEach(enemy => {
 			enemy.update(this.target, this.pos, this.enemies);
 		});
+		
 
-		if(this.type === world.type){
-			this.checkBulletCollision(player.bullets);
-		}
+		
+		this.checkBulletCollision(player.bullets);
+		
 	}
 
 	draw() {
@@ -46,7 +50,7 @@ class Swarm {
 
 	updateTargets() {
 		this.target = this.startTarget;
-		world.buildingController.buildings.forEach(building => {
+		this.wrld.buildingController.buildings.forEach(building => {
 			if(this.type === world.type){
 				let score = Math.sqrt(Math.pow(this.pos.x - building.pos.x, 2) + Math.pow(this.pos.y - building.pos.y, 2));
 				if(score < this.target.score) {
@@ -55,7 +59,6 @@ class Swarm {
 			}
 		});
 
-		console.log("Type: " + this.type + "; World: " + world.type);
 		if(this.type === world.type){
 			let playerScore = Math.sqrt(Math.pow(this.pos.x - player.pos.x, 2) + Math.pow(this.pos.y - player.pos.y, 2));
 			if(playerScore < this.target.score){

@@ -1,7 +1,7 @@
 class Miner extends Building{
 
 	constructor(pos,inventory){
-		super(pos,inventory,40,3000,300,world.type);
+		super(pos,inventory,40,2700,300,world.type);
 	}
 
 	draw(){

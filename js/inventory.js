@@ -1,8 +1,8 @@
 class Inventory{
 
 	constructor(){
-		this.r1 = 0;
-		this.r2 = 0;
+		this.r1 = 20;
+		this.r2 = 20;
 	}
 
 	increaseResources(type){

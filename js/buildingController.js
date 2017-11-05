@@ -6,7 +6,12 @@ class BuildingController{
 	}
 
 	update(){
-		this.buildings.forEach(b => b.generate()); //Generate resources and draw
+		this.buildings.forEach(b => {
+			if(b instanceof Turret){
+				b.update();
+			}
+			b.generate();
+		}); //Generate resources and draw
 		this.checkHealth(); //Check health
 	}
 
@@ -22,8 +27,8 @@ class BuildingController{
 		this.buildings.push(new Base(pos,this.inventory,type));
 	}
 
-	createTurret(pos){
-		this.buildings.push(new Turret(pos));
+	createTurret(pos,type){
+		this.buildings.push(new Turret(pos,type));
 	}
 
 	checkHealth(){
@@ -43,10 +48,10 @@ class BuildingController{
 	}
 
 
-	isPosAvailable(pos){
+	isPosAvailable(pos,type){
 		let isAvailable = true;
-		let anderskangaaaaleggeseg = this.getCurrentTile(mouseX,mouseY);
-		if(world.tiles[anderskangaaaaleggeseg.x][anderskangaaaaleggeseg.y] != 1) isAvailable = false;
+		let a = this.getCurrentTile(mouseX,mouseY);
+		if(world.tiles[a.x][a.y] != 1 && type === 0) isAvailable = false;
 		this.buildings.forEach(b => {
 			if(abs(pos.x - b.pos.x) <= 3 && abs(pos.y - b.pos.y) <= 3){
 				isAvailable = false;

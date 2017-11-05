@@ -1,16 +1,15 @@
 class Turret {
 
-	constructor(pos){
+	constructor(pos,type){
 		this.pos = pos;
 		this.size = 40;
-		this.range = 300;
+		this.range = 450;
 		this.rotation = 0;
+		this.count = 0;
 		this.startHealth = 300;
 		this.health = this.startHealth;
-		this.startMillis = millis();
-		this.curCD = 0;
-		this.CD = 1000;
 		this.isShooting = false;
+		this.type = type;
 	}
 
 	draw(){
@@ -28,7 +27,6 @@ class Turret {
 		}
 		
 		pop();
-		this.update();
 	}
 
 	drawHealthBar(){
@@ -48,7 +46,8 @@ class Turret {
 	}
 
 	update(){
-		let swarms = world.swarmController.swarms;
+		let wrld = (this.type === world.type)? world : world2;
+		let swarms = wrld.swarmController.swarms;
 		this.isShooting = false;
 		for(let k = swarms.length - 1; k >= 0; k--){
 			for(let i = swarms[k].enemies.length - 1; i >= 0; i--){
@@ -64,8 +63,7 @@ class Turret {
 	}
 
 	generate(){
-		this.curCD = millis() - this.startMillis;
-		//console.log("CurCD: " + this.curCD);
+		this.count++;
 		//this.update();
 	}
 
@@ -79,15 +77,16 @@ class Turret {
 
 	shot(target){
 		//console.log(this.curCD + ">= " + this.CD);
-		if(this.curCD >= this.CD){
-			this.startMillies = millis();
+		this.count = this.count % 1000;
+		if(this.count % 20 == 0){
 			//console.log("Should be 0: " + (this.curCD - this.startMillies));
 			let velX = ((target.pos.x - target.r) - (this.pos.x + this.size/2));
 			let velY = ((target.pos.y - target.r) - (this.pos.y + this.size/2));
 			let magnitude = sqrt(pow(velX,2) + pow(velY,2));
 			let vel = {x: velX/magnitude, y: velY/magnitude};
 			let pos = {x: this.pos.x + this.size/2, y: this.pos.y + this.size/2};
-			player.bullets.push(new Bullet(pos,vel));
+			player.bullets.push(new Bullet(pos,vel,(this.type === world.type)));
+
 		} 
 	}
 

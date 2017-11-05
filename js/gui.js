@@ -39,19 +39,19 @@ class GUI{
 		let h = 75;
 
 		stroke(0);
-		strokeWeight(3);
+		strokeWeight(3 );
 		fill(255,153,51);
 		rect(width/2 - w/2,height - h,w,h);
 
 		fill(255);
-		image(sprite.r1,width/2 - w/2 + 40,height - h + 10);
-		image(sprite.r2,width/2 - w/2 + 40,height - h + 40);
+		image(sprite.r1,width/2 - w/2 + 50,height - h + 10);
+		image(sprite.r2,width/2 - w/2 + 50,height - h + 40);
 		stroke(0);
 		strokeWeight(3);
 		fill(0,240,0);
-		text("Resource 1: " + this.inventory.r1 + "/" + gameController.r1Goal,width/2 - w/2 + 80,height - h +26);
+		text(this.inventory.r1 + "/" + gameController.r1Goal + " collected",width/2 - w/2 + 95,height - h +26);
 		fill(230,0,230);
-		text("Resource 2: " + this.inventory.r2 + "/" + gameController.r2Goal,width/2 - w/2 + 80,height - h + 63);
+		text(this.inventory.r2 + "/" + gameController.r2Goal + " collected",width/2 - w/2 + 95,height - h + 63);
 	}
 
 

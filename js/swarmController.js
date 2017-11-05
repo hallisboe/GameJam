@@ -7,15 +7,22 @@ class SwarmController {
 
 	update() {
 		// Spawn new swarm
-		if(Math.random() < 0.001 && this.swarms.length < 10) { 
+		if(Math.random() < swarmSpawnChance && this.swarms.length < swarmCount) { 
 			this.swarms.push(new Swarm(this.type));
 		}
 		//console.log(this.swarms)
 		// Anders er sykt casual hihihi
-		this.swarms.forEach(swarm => {
-			swarm.update();
-			if(swarm.enemies.length == 0) swarms.pop(swarm);
-		}); 
+
+		for(let i = this.swarms.length -1; i >= 0; i--){
+			this.swarms[i].update();
+			if(this.swarms[i].enemies.length == 0){
+				this.swarms.splice(i,1);
+				swarmCount = (Math.random == 0.05)? swarmCount + 1 : swarmCount;
+				swarmSpawnChance += 0.00007;
+				console.log("Killed of swarm");
+				break;
+			}
+		}
 	}
 
 	draw() {

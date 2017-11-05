@@ -17,5 +17,6 @@ class Sprites{
 		this.enemy = loadImage("https://i.imgur.com/Gm9EVxD.png");
 		this.r1 = loadImage("https://i.imgur.com/jg7QJE7.png");
 		this.r2 = loadImage("https://i.imgur.com/qFlvXAo.png");
+		this.enemy = loadImage("https://i.imgur.com/Vdbex7Z.png");
 	}
 }

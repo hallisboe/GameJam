@@ -1,7 +1,7 @@
 class Base extends Building{
 
 	constructor(pos,inventory,type){
-		super(pos,inventory,80,1000,2000,type);
+		super(pos,inventory,80,2000,2000,type);
 	}
 
 	draw(){
@@ -12,5 +12,10 @@ class Base extends Building{
 		this.drawHealthBar();
 		this.drawBaseGenerateTimer();
 		pop();	
+	}
+
+	reduceHealth(){
+		world.buildingController.buildings[0].health -= 1;
+		world2.buildingController.buildings[0].health -= 1;
 	}
 }

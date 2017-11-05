@@ -1,14 +1,18 @@
 class World {
 
-	constructor(invetory,type){
+	constructor(inventory,type){
 	  	this.tiles = (type === 0)? this.loadWorld() : this.loadWorld2();
 	  	this.type = type;
-        this.swarmController = new SwarmController(this.type);
-	  	this.buildingController = new BuildingController(invetory);
-	  	this.buildingController.createMainBuilding({x:width/2 + 160, y:height/2},type);
+	  	this.buildingController = new BuildingController(inventory);
+	  	this.buildingController.createMainBuilding({x:width/2 + 160, y:height/2},this.type);
 	  	let basePos = this.buildingController.buildings[0].pos;
 	  	this.portalPos = {x: basePos.x + 50, y: basePos.y + 50};
 
+  	}
+
+  	initializeSwarmController(){
+  		console.log("Swarm: " + this.type);
+  		this.swarmController = new SwarmController(this.type);
   	}
 
 	draw(){

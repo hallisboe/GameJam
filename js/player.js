@@ -4,6 +4,7 @@ class Player{
 		this.vel = {x: 0, y: 0};
 		this.size = 50;
 		this.movSpeed = 3;
+		this.count = 0;
 		this.rotation = 0;
 		this.bullets = [];
 		this.startHealth = 500;
@@ -87,7 +88,13 @@ class Player{
 	}
 
 	shoot(){
-		this.bullets.push(new Bullet(this.pos,null));
+		this.count = this.count % 1000;
+		if(this.count % 5 == 0){
+			this.bullets.push(new Bullet(this.pos,null,true));
+
+		} 
+		this.count++;
+		
 	}
 
 	checkCollision(enemies){

@@ -1,6 +1,6 @@
 class Bullet {
 	
-	constructor(pos,vel){
+	constructor(pos,vel,visible){
 		this.r = 5;
 		this.pos = {x: pos.x + this.r, y: pos.y + this.r};
 		console.log(vel);
@@ -8,6 +8,7 @@ class Bullet {
 		this.speed = 7;
 		this.date = new Date();
 		this.time = this.date.getTime();
+		this.visible = visible;
 	}
 
 	calculateVelocity(){
@@ -20,10 +21,12 @@ class Bullet {
 	}
 
 	draw(){
-		push();
-		fill(200,0,0);
-		ellipse(this.pos.x - this.r,this.pos.y - this.r,this.r*2,this.r*2);
-		pop();
+		if(this.visible){
+			push();
+			fill(200,0,0);
+			ellipse(this.pos.x - this.r,this.pos.y - this.r,this.r*2,this.r*2);
+			pop();
+		}
 	}
 
 	update(){

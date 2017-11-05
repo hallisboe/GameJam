@@ -23,11 +23,16 @@ let fTheme = true;
 
 const SCALE = 40;
 const enemyLimit = 10;
-const minerPrice = 20;
-const turretPrice = 20;
+const minerPrice = 10;
+const turretPrice = 100;
 
 let isHolding = false;
 let buildOrder;
+
+let swarmCount = 10;
+let swarmSpawnChance = 0.001;
+
+let isShooting = false;
 
 
 let width = window.innerWidth
@@ -57,6 +62,8 @@ function setup() {
   inventory = new Inventory();
   world = new World(inventory,0); //Current world
   world2 = new World(inventory,1); //The other world
+  world.initializeSwarmController();
+  world2.initializeSwarmController();
   player = new Player({x: width/2, y: height/2});
   world.draw();
   loadPixels(); // EDDFA
@@ -89,8 +96,12 @@ function draw(){
   }
 
   if(player.checkPortalCollision(world.portalPos)){
-      player.pos = {x: world.portalPos.x - 100, y: world.portalPos.y};
+      player.pos = {x: world.portalPos.x-10, y: world.portalPos.y+80};
       changeWorld();
+  }
+
+  if(isShooting){
+    player.shoot();
   }
 
   gui.draw(); //Have to be the last one to draw
@@ -123,17 +134,19 @@ function keyReleased(){
 }
 
 function mousePressed(){
-	player.shoot();
+	isShooting = true;
 
-  if(isHolding && world.buildingController.isPosAvailable(buildOrder.getPos())){
+  if(isHolding && world.buildingController.isPosAvailable(buildOrder.getPos(),buildOrder.type)){
     if(buildOrder.type === 0){
       world.buildingController.createMiner(buildOrder.getPos());
+      inventory.decreaseResources(minerPrice);
     }
     else{
-      world.buildingController.createTurret(buildOrder.getPos());
+      world.buildingController.createTurret(buildOrder.getPos(),world.type);
+      inventory.decreaseResources(turretPrice);
     }
     isHolding = false;
-    inventory.decreaseResources(minerPrice);
+    
   }
   else if(!isHolding && gui.purchaseMiner.isClicked(mouseX,mouseY) && inventory.checkResources(minerPrice)){
     isHolding = true;
@@ -143,6 +156,10 @@ function mousePressed(){
     isHolding = true;
     buildOrder = new BuildOrder(1);
   }
+}
+
+function mouseReleased() {
+    isShooting = false;
 }
 
 function changeWorld(){

@@ -13,7 +13,8 @@ class Enemy {
 	draw(){
 		fill(0);
 		// Anders er til tider ikke morsom, veldig ikke morsom #shootsfired
-		ellipse(this.pos.x - this.r + (Math.random() - 0.5) * 50, this.pos.y - this.r + (Math.random() - 0.5) * 50,this.r*2,this.r*2);
+		image(sprite.enemy,this.pos.x - this.r + (Math.random() - 0.5) * 50,this.pos.y - this.r + (Math.random() - 0.5) * 50);
+		//ellipse(this.pos.x - this.r + (Math.random() - 0.5) * 50, this.pos.y - this.r + (Math.random() - 0.5) * 50,this.r*2,this.r*2);
 	}
 
 	attack(target){
