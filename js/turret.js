@@ -5,10 +5,11 @@ class Turret {
 		this.size = 40;
 		this.range = 300;
 		this.rotation = 0;
-		this.startHealth = 200;
+		this.startHealth = 300;
 		this.health = this.startHealth;
 		this.startMillis = millis();
 		this.curCD = 0;
+		this.CD = 1000;
 		this.isShooting = false;
 	}
 
@@ -46,22 +47,25 @@ class Turret {
 	}
 
 	update(){
-		let enemies = swarms[0].enemies;
-		console.log("ENemies length: " + enemies.length);
+		let swarms = world.swarmController.swarms;
 		this.isShooting = false;
-		for(let i = enemies.length - 1; i >= 0; i--){
-			if(this.isEnemyInRange(enemies[i])){
-				this.isShooting = true;
-				this.lookAt(enemies[i]);;
-				//Shot
-				break;
+		for(let k = swarms.length - 1; k >= 0; k--){
+			for(let i = swarms[k].enemies.length - 1; i >= 0; i--){
+				if(this.isEnemyInRange(swarms[k].enemies[i])){
+					this.isShooting = true;
+					this.lookAt(swarms[k].enemies[i]);;
+					this.shot(swarms[k].enemies[i]);
+					return;
+				}
 			}
 		}
+		
 	}
 
 	generate(){
-		this.update();
 		this.curCD = millis() - this.startMillis;
+		console.log("CurCD: " + this.curCD);
+		this.update();
 	}
 
 	reduceHealth(){
@@ -72,14 +76,21 @@ class Turret {
 		return (this.health <= 0)? true : false;
 	}
 
-	shot(){
+	shot(target){
+		//console.log(this.curCD + ">= " + this.CD);
 		if(this.curCD >= this.CD){
 			this.startMillies = millis();
-			
+			//console.log("Should be 0: " + (this.curCD - this.startMillies));
+			let velX = cos(this.rotation);
+			let velY = sin(this.rotation);
+			let vel = {x: velX, y: velY};
+			let pos = {x: this.pos.x + this.size/2, y: this.pos.y + this.size/2};
+			player.bullets.push(new Bullet(pos,vel));
 		} 
 	}
 
 	lookAt(target){
-		this.rotation = -atan2((target.pos.y - this.pos.y + this.size/2)/(target.pos.x - this.pos.x - this.size/2));
+		this.rotation = atan2((target.pos.y - this.pos.y),(target.pos.x - this.pos.x)) + 90;
+		console.log("Rotation: " + rotation);
 	}
 }

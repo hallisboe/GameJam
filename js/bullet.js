@@ -3,9 +3,9 @@ class Bullet {
 	constructor(pos,vel){
 		this.r = 5;
 		this.pos = {x: pos.x + this.r, y: pos.y + this.r};
-		this.vel = this.calculateVelocity(pos);
+		console.log(vel);
+		this.vel = (vel === null)? this.calculateVelocity() : vel;
 		this.speed = 7;
-
 		this.date = new Date();
 		this.time = this.date.getTime();
 	}

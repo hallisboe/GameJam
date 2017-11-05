@@ -48,7 +48,7 @@ class Building{
 	}
 
 	generate(){
-		this.curTime = millis() - this.startMillies
+		this.curTime = millis() - this.startMillies;
 		if(this.curTime >= this.generateTime){
 			this.startMillies = millis();
 			inventory.increaseResources(this.type);

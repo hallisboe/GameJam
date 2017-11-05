@@ -87,7 +87,7 @@ class Player{
 	}
 
 	shoot(){
-		this.bullets.push(new Bullet(this.pos,this.vel));
+		this.bullets.push(new Bullet(this.pos,null));
 	}
 
 	checkCollision(enemies){
