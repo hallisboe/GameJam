@@ -6,7 +6,7 @@ class SwarmController {
 
 	update() {
 		// Spawn new swarm
-		if(Math.random() < 0.002 && this.swarms.length < 10) { 
+		if(Math.random() < 0.001 && this.swarms.length < 10) { 
 			this.swarms.push(new Swarm());
 		}
 		//console.log(this.swarms)
