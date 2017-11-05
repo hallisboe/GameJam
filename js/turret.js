@@ -9,15 +9,23 @@ class Turret {
 		this.health = this.startHealth;
 		this.startMillis = millis();
 		this.curCD = 0;
+		this.isShooting = false;
 	}
 
 	draw(){
 		push();
 		fill(51);
-		image(sprite.turretStand,this.pos.x,this.pos.y);
-		rotate(this.rotation);
-		image(sprite.turretGreen,this.pos.x,this.pos.y - this.size/4);
 		this.drawHealthBar();
+		image(sprite.turretStand,this.pos.x,this.pos.y);
+		translate(this.pos.x + this.size/2,this.pos.y + this.size/2);
+		rotate(this.rotation);
+		if(!this.isShooting){
+			image(sprite.turretGreen,-this.size/2,-this.size/2- this.size/4);
+		}
+		else{
+			image(sprite.turretRed,-this.size/2,-this.size/2- this.size/4);
+		}
+		
 		pop();
 	}
 
@@ -39,15 +47,20 @@ class Turret {
 
 	update(){
 		let enemies = swarms[0].enemies;
+		console.log("ENemies length: " + enemies.length);
+		this.isShooting = false;
 		for(let i = enemies.length - 1; i >= 0; i--){
-			if(isEnemyInRange(enemies[i])){
-				//Rotate
+			if(this.isEnemyInRange(enemies[i])){
+				this.isShooting = true;
+				this.lookAt(enemies[i]);;
 				//Shot
+				break;
 			}
 		}
 	}
 
 	generate(){
+		this.update();
 		this.curCD = millis() - this.startMillis;
 	}
 
@@ -64,5 +77,9 @@ class Turret {
 			this.startMillies = millis();
 			
 		} 
+	}
+
+	lookAt(target){
+		this.rotation = -atan((target.pos.x - this.pos.x - this.size/2)/(target.pos.y - this.pos.y + this.size/2));
 	}
 }

@@ -19,6 +19,7 @@ let bg;
 const SCALE = 40;
 const enemyLimit = 10;
 const minerPrice = 20;
+const turretPrice = 20;
 
 let isHolding = false;
 let buildOrder;
@@ -33,7 +34,7 @@ let height = window.innerHeight
 || document.body.clientHeight;
 
 function preload(){
-  sprite = new Sprites();  //loadImage("http://i.imgur.com/fjdKxpe.png");
+  sprite = new Sprites();
 }
 
 
@@ -117,7 +118,7 @@ function mousePressed(){
     isHolding = true;
     buildOrder = new BuildOrder(0);
   }
-  else if(!isHolding && gui.purchaseTurret.isClicked(mouseX,mouseY) && inventory.checkResources(minerPrice)){
+  else if(!isHolding && gui.purchaseTurret.isClicked(mouseX,mouseY) && inventory.checkResources(turretPrice)){
     isHolding = true;
     buildOrder = new BuildOrder(1);
   }
