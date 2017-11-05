@@ -121,6 +121,19 @@ function keyPressed(){
   else if(keyCode === 68){
   	player.vel.x = 1;
   }
+
+  if(keyCode === 81){
+    if(!isHolding && inventory.checkResources(minerPrice)){
+        isHolding = true;
+        buildOrder = new BuildOrder(0);
+    }
+  }
+  else if(keyCode === 69){
+    if(!isHolding && inventory.checkResources(turretPrice)){
+        isHolding = true;
+        buildOrder = new BuildOrder(1);
+    }
+  }
 }
 
 function keyReleased(){
