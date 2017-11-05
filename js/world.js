@@ -2,6 +2,7 @@ class World {
 
 	constructor(invetory,type){
 	  	this.tiles = (type === 0)? this.loadWorld() : this.loadWorld2();
+        this.swarmController = new SwarmController()
 	  	this.buildingController = new BuildingController(invetory);
 	  	this.buildingController.createMainBuilding({x:width/2 + 160, y:height/2},type);
 	  	let basePos = this.buildingController.buildings[0].pos;

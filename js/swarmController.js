@@ -1,0 +1,7 @@
+class SwarmController {
+
+	constructor() {
+
+	}
+	
+}
