@@ -1,9 +1,9 @@
 class Swarm {
 
-	constructor() {
+	constructor(type) {
 		this.size = 10;
 		this.pos = Math.random() < 0.5 ? {x: Math.round(Math.random()) * 1920, y:Math.round(Math.random() * 1080)} : {x: Math.round(Math.random() * 1920), y:Math.round(Math.random()) * 1080};
-		this.target = {score: 1000, pos: {x: 0, y: 0}, building: world.buildingController.buildings[0]};
+		this.target = {score: 1000, pos: world.buildingController.buildings[0].pos, building: world.buildingController.buildings[0]};
 		this.enemies = [];
 		this.vel = {x: 0, y: 0};
 		this.speed = 2.5;
@@ -13,6 +13,8 @@ class Swarm {
 			let startPos = {x: this.pos.x+(i-5)*60 - 400, y: this.pos.y-(i-5)*60 - 400};
 			this.enemies.push(new Enemy(startPos));
 		}
+		this.type = type;
+		this.startTarget = this.target;
 	}
 
 	update() {
@@ -29,7 +31,10 @@ class Swarm {
 		this.enemies.forEach(enemy => {
 			enemy.update(this.target, this.pos, this.enemies);
 		});
-		this.checkBulletCollision(player.bullets);
+
+		if(this.type === world.type){
+			this.checkBulletCollision(player.bullets);
+		}
 	}
 
 	draw() {
@@ -39,17 +44,22 @@ class Swarm {
 	}
 
 	updateTargets() {
-		this.target = {score: 1000, pos: player.pos, building: player};
+		this.target = this.startTarget;
 		world.buildingController.buildings.forEach(building => {
-			let score = Math.sqrt(Math.pow(this.pos.x - building.pos.x, 2) + Math.pow(this.pos.y - building.pos.y, 2));
-			if(score < this.target.score) {
-				this.target = {score: score, pos: building.pos, building: building};
+			if(this.type === world.type){
+				let score = Math.sqrt(Math.pow(this.pos.x - building.pos.x, 2) + Math.pow(this.pos.y - building.pos.y, 2));
+				if(score < this.target.score) {
+					this.target = {score: score, pos: building.pos, building: building};
+				}
 			}
 		});
 
-		let playerScore = Math.sqrt(Math.pow(this.pos.x - player.pos.x, 2) + Math.pow(this.pos.y - player.pos.y, 2));
-		if(playerScore < this.target.score){
-			this.target = {score: playerScore, pos: player.pos, building: player};
+		console.log("Type: " + this.type + "; World: " + world.type);
+		if(this.type === world.type){
+			let playerScore = Math.sqrt(Math.pow(this.pos.x - player.pos.x, 2) + Math.pow(this.pos.y - player.pos.y, 2));
+			if(playerScore < this.target.score){
+				this.target = {score: playerScore, pos: player.pos, building: player};
+			}
 		}
 	}
 

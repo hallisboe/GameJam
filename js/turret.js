@@ -93,6 +93,5 @@ class Turret {
 
 	lookAt(target){
 		this.rotation = atan2((target.pos.y - target.r - this.pos.y),(target.pos.x - target.r - this.pos.x)) + 90;
-		console.log("Rotation: " + this.rotation);
 	}
 }

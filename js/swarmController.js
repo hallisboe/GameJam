@@ -1,13 +1,14 @@
 class SwarmController {
 
-	constructor() {
+	constructor(type) {
 		this.swarms = []
+		this.type = type;
 	}
 
 	update() {
 		// Spawn new swarm
 		if(Math.random() < 0.001 && this.swarms.length < 10) { 
-			this.swarms.push(new Swarm());
+			this.swarms.push(new Swarm(this.type));
 		}
 		//console.log(this.swarms)
 		// Anders er sykt casual hihihi
