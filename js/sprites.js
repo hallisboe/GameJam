@@ -1,10 +1,10 @@
 class Sprites{
 
 	constructor(){
-		this.playerLeft = loadImage("http://i.imgur.com/4Z6xoYK.png");
-		this.playerRight = loadImage("http://i.imgur.com/Z8U1FJ2.png");
-		this.playerFront = loadImage("http://i.imgur.com/iHTCY7t.png");
-		this.playerBack = loadImage("http://i.imgur.com/BGe64zl.png");
+		this.playerLeft = loadImage("https://i.imgur.com/scAX8Gt.png");
+		this.playerRight = loadImage("https://i.imgur.com/ksUksWm.png");
+		this.playerFront = loadImage("https://i.imgur.com/RftUL5E.png");
+		this.playerBack = loadImage("https://i.imgur.com/ySLv7Ji.png");
 		this.world = loadImage("https://i.imgur.com/4EDY5Ix.png");
 		this.world2 = loadImage("https://i.imgur.com/n04iZjv.png");
 		this.portal = loadImage("https://i.imgur.com/l7ftCpx.png");
