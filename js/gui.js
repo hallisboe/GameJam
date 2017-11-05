@@ -39,6 +39,12 @@ class GUI{
 		rect(width/2 - 300,barHeight/2 - 15,600,barHeight/2 + 8);
 		fill(0,255,0);
 		rect(width/2 - 300,barHeight/2 - 15,map(world.buildingController.buildings[0].health,0,2000,0,600),barHeight/2 + 8);
+
+		fill(255);
+		stroke(0);
+		strokeWeight(1);
+		let totalKills = world.swarmController.spawnCount + world2.swarmController.spawnCount;
+		text("Wave Count: " + totalKills,width-200,barHeight/2 + 7);
 	}
 
 	drawBottomBar(){

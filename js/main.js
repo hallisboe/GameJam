@@ -33,6 +33,7 @@ let swarmCount = 2;
 let swarmSpawnChance = 0.0013;
 
 let isShooting = false;
+let enemySpeed = 1.9;
 
 
 let width = window.innerWidth

@@ -10,7 +10,6 @@ class Swarm {
 		this.target = {score: 1000, pos: this.wrld.buildingController.buildings[0].pos, building: this.wrld.buildingController.buildings[0]};
 		this.enemies = [];
 		this.vel = {x: 0, y: 0};
-		this.speed = 1.9;
 		this.world = Math.round(Math.random());
 		this.minDistance = 10;
 		for(let i = 0; i < 10; i++) {
@@ -26,8 +25,8 @@ class Swarm {
 			let x = this.target.pos.x - this.pos.x;
 			let y = this.target.pos.y - this.pos.y;
 			let magnitude = sqrt(pow(x,2) + pow(y,2));
-			this.vel.x = (x/magnitude)*this.speed;
-			this.vel.y = (y/magnitude)*this.speed;
+			this.vel.x = (x/magnitude)*enemySpeed;
+			this.vel.y = (y/magnitude)*enemySpeed;
 			this.pos.y += this.vel.y;
 			this.pos.x += this.vel.x;
 		}
