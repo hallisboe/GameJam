@@ -17,6 +17,7 @@ let swarms;
 
 let canvas;
 let bg;
+let fTheme = true;
 
 const SCALE = 40;
 const enemyLimit = 10;
@@ -37,9 +38,9 @@ let height = window.innerHeight
 
 function preload(){
   sprite = new Sprites();
-  // soundFormats('mp3', 'ogg');
-  // theme_world1 = loadSound("sound/alone.mp3");
-  // theme_world2 = loadSound("sound/strangeplace.mp3");
+  soundFormats('mp3', 'ogg');
+  theme_world1 = loadSound('https://dl.dropboxusercontent.com/s/m8tc36q6o2c72y7/alone.mp3');
+  theme_world2 = loadSound('https://dl.dropboxusercontent.com/s/ptmzficprqpmq0k/strangeplace.mp3');
 }
 
 
@@ -55,6 +56,8 @@ function setup() {
   player = new Player({x: width/2, y: height/2});
   world.draw();
   loadPixels(); // EDDFA
+  theme_world1.setVolume(0.1);
+  theme_world1.play();
   gui = new GUI(inventory);
   swarms = [new Swarm(), new Swarm()];
   gameController = new GameController();
@@ -144,5 +147,14 @@ function changeWorld(){
   world2 = temp;
   world.draw();
   loadPixels();
+  theme_world1.stop();
+  theme_world2.stop();
+  theme_world1.setVolume(0.1);
+  fTheme = !fTheme;
+  if (fTheme) {
+    theme_world1.play();
+  }else {
+    theme_world2.play();
+  }
   console.log("Changed World");
 }

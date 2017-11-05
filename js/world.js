@@ -8,7 +8,7 @@ class World {
 	  	this.buildingController.createMainBuilding({x:width/2 + 160, y:height/2},type);
 	  	let basePos = this.buildingController.buildings[0].pos;
 	  	this.portalPos = {x: basePos.x + 50, y: basePos.y + 50};
-	  	
+
   	}
 
 	draw(){
@@ -82,9 +82,6 @@ class World {
         [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
 
       ];
-
-			// theme_world1.setVolume(0.1);
-  		// theme_world1.play();
 	}
 
 	loadWorld2(){
