@@ -63,7 +63,7 @@ function draw(){
   swarms.forEach(swarm => swarm.update());
   //Drawing buildOrder
   if(isHolding){
-    buildOrder.draw(mouseX,mouseY);
+    buildOrder.draw();
   }
 
   if(player.checkPortalCollision(world.portalPos)){
@@ -104,13 +104,22 @@ function mousePressed(){
 	player.shoot();
 
   if(isHolding && world.buildingController.isPosAvailable(buildOrder.getPos())){
-    world.buildingController.createMiner(buildOrder.getPos());
+    if(buildOrder.type === 0){
+      world.buildingController.createMiner(buildOrder.getPos());
+    }
+    else{
+      world.buildingController.createTurret(buildOrder.getPos());
+    }
     isHolding = false;
     inventory.decreaseResources(minerPrice);
   }
   else if(!isHolding && gui.purchaseMiner.isClicked(mouseX,mouseY) && inventory.checkResources(minerPrice)){
     isHolding = true;
     buildOrder = new BuildOrder(0);
+  }
+  else if(!isHolding && gui.purchaseTurret.isClicked(mouseX,mouseY) && inventory.checkResources(minerPrice)){
+    isHolding = true;
+    buildOrder = new BuildOrder(1);
   }
 }
 
