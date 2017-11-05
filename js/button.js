@@ -16,6 +16,7 @@ class Button {
 		let rw = this.size/2;
 		let rh = this.size/2;
 		rect(this.pos.x-rw/2,this.pos.y - rh/2,rw,rh);
+		image(sprite.miner,this.pos.x-rw/2,this.pos.y - rh/2,rw,rh);
 	}
 
 	drawTurret(){
@@ -29,6 +30,8 @@ class Button {
 		let rw = this.size/2;
 		let rh = this.size/2;
 		rect(this.pos.x-rw/2,this.pos.y - rh/2,rw,rh);
+		image(sprite.turretRed,this.pos.x-rw/2,this.pos.y - rh/2,rw,rh);
+		//rect(this.pos.x-rw/2,this.pos.y - rh/2,rw,rh);
 	}
 
 	isClicked(x,y){

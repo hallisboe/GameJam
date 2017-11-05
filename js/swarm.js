@@ -3,7 +3,8 @@ class Swarm {
 	constructor(type) {
 		this.size = 10;
 		this.pos = Math.random() < 0.5 ? {x: Math.round(Math.random()) * 1920, y:Math.round(Math.random() * 1080)} : {x: Math.round(Math.random() * 1920), y:Math.round(Math.random()) * 1080};
-		this.target = {score: 1000, pos: world.buildingController.buildings[0].pos, building: world.buildingController.buildings[0]};
+		let wrld = (type == 0)? world : world2;
+		this.target = {score: 1000, pos: wrld.buildingController.buildings[0].pos, building: wrld.buildingController.buildings[0]};
 		this.enemies = [];
 		this.vel = {x: 0, y: 0};
 		this.speed = 2.5;

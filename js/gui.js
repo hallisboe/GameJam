@@ -34,9 +34,9 @@ class GUI{
 		rect(width/2 - w/2 + 10, height - h + 10,20,20);
 		rect(width/2 - w/2 + 10, height - h + 40,20,20);
 		fill(200,0,0);
-		text("Resource 1: " + this.inventory.r1 + "/1000",width/2 - w/2 + 50,height - h +26);
+		text("Resource 1: " + this.inventory.r1 + "/" + gameController.r1Goal,width/2 - w/2 + 50,height - h +26);
 		fill(0,0,200);
-		text("Resource 2: " + this.inventory.r2 + "/500",width/2 - w/2 + 50,height - h + 57);
+		text("Resource 2: " + this.inventory.r2 + "/" + gameController.r2Goal,width/2 - w/2 + 50,height - h + 57);
 	}
 
 
