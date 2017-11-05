@@ -5,7 +5,7 @@ class Bullet {
 		this.pos = {x: pos.x + this.r, y: pos.y + this.r};
 		console.log(vel);
 		this.vel = (vel === null)? this.calculateVelocity() : vel;
-		this.speed = 7;
+		this.speed = 9;
 		this.date = new Date();
 		this.time = this.date.getTime();
 		this.visible = visible;

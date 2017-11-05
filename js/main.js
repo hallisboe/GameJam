@@ -54,6 +54,7 @@ function preload(){
 
 
 function setup() {
+  frameRate(45);
   createCanvas(width, height);
   background(51);
   cursor(CROSS);

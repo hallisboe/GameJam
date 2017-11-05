@@ -3,7 +3,7 @@ class Player{
 		this.pos = pos;
 		this.vel = {x: 0, y: 0};
 		this.size = 50;
-		this.movSpeed = 3;
+		this.movSpeed = 6;
 		this.count = 0;
 		this.rotation = 0;
 		this.bullets = [];

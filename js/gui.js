@@ -32,6 +32,13 @@ class GUI{
 		textStyle(BOLD);
 		textSize(20);
 		text(inventory.r2,115,barHeight/2 + 7);
+
+		stroke(0);
+		strokeWeight(1);
+		fill(0);
+		rect(width/2 - 300,barHeight/2 - 15,600,barHeight/2 + 8);
+		fill(0,255,0);
+		rect(width/2 - 300,barHeight/2 - 15,map(world.buildingController.buildings[0].health,0,2000,0,600),barHeight/2 + 8);
 	}
 
 	drawBottomBar(){
