@@ -14,6 +14,6 @@ class Sprites{
 		this.turretStand = loadImage("https://i.imgur.com/QpR1BCA.png");
 		this.turretRed = loadImage("https://i.imgur.com/DaKTwhC.png");
 		this.turretGreen = loadImage("https://i.imgur.com/xXFRJhM.png");
-		this.enemy = loadImage("https://i.imgur.com/6uPwrDl.png");
+		this.enemy = loadImage("https://i.imgur.com/Gm9EVxD.png");
 	}
 }
