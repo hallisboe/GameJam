@@ -18,7 +18,7 @@ class SwarmController {
 			if(this.swarms[i].enemies.length == 0){
 				this.swarms.splice(i,1);
 				swarmCount = (Math.random == 0.05)? swarmCount + 1 : swarmCount;
-				swarmSpawnChance *= 1.03;
+				swarmSpawnChance *= 1.005;
 				console.log("Killed of swarm");
 				break;
 			}
