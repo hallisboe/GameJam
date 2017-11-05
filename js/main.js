@@ -4,6 +4,8 @@
 
 let world;
 let world2;
+let theme_world1;
+let theme_world2;
 let tempWorld;
 let player;
 let enemyController;
@@ -35,6 +37,9 @@ let height = window.innerHeight
 
 function preload(){
   sprite = new Sprites();
+  // soundFormats('mp3', 'ogg');
+  // theme_world1 = loadSound("sound/alone.mp3");
+  // theme_world2 = loadSound("sound/strangeplace.mp3");
 }
 
 
