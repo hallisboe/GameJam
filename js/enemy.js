@@ -12,7 +12,8 @@ class Enemy {
 
 	draw(){
 		fill(0);
-		ellipse(this.pos.x - this.r, this.pos.y - this.r,this.r*2,this.r*2);
+		// Anders er til tider ikke morsom, veldig ikke morsom
+		ellipse(this.pos.x - this.r + (Math.random() - 0.5) * 50, this.pos.y - this.r + (Math.random() - 0.5) * 50,this.r*2,this.r*2);
 	}
 
 	attack(target){

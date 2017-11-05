@@ -27,7 +27,7 @@ class Swarm {
 			this.pos.x += this.vel.x;
 		}
 		this.enemies.forEach(enemy => {
-			enemy.update(this.target, this.pos,this.enemies);
+			enemy.update(this.target, this.pos, this.enemies);
 		});
 		this.checkBulletCollision(player.bullets);
 	}
