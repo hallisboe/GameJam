@@ -32,6 +32,12 @@ class Swarm {
 		this.checkBulletCollision(player.bullets);
 	}
 
+	draw() {
+		this.enemies.forEach(enemy => {
+			enemy.draw();
+		});
+	}
+
 	updateTargets() {
 		this.target = {score: 1000, pos: player.pos, building: player};
 		world.buildingController.buildings.forEach(building => {

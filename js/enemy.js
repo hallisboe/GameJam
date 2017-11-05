@@ -29,7 +29,6 @@ class Enemy {
 	update(target, pos){
 		this.attack(target);
 		this.pos = pos;
-		this.draw();
 	}
 
 

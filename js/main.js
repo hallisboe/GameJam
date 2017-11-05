@@ -61,7 +61,6 @@ function draw(){
   player.update();
   world.update(); //Generate resources in world 1
   world2.update(); //Generate resources in world 2
-  swarms.forEach(swarm => swarm.update());
   //Drawing buildOrder
   if(isHolding){
     buildOrder.draw();

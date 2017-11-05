@@ -21,6 +21,7 @@ class World {
 
 	drawComps(){
 		this.buildingController.draw();
+        this.swarmController.draw();
 	}
 
 	update(){
