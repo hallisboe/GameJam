@@ -82,6 +82,9 @@ class World {
         [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
 
       ];
+
+			// theme_world1.setVolume(0.1);
+  		// theme_world1.play();
 	}
 
 	loadWorld2(){
