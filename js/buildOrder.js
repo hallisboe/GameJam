@@ -8,6 +8,7 @@ class BuildOrder{
 	draw(){
 		//Draw miner
 		this.pos = this.getCurrentTile(mouseX,mouseY);
+
 		if(this.type === 0){
 			fill(255,255,255,100);
 			rect(this.pos.x*SCALE,this.pos.y*SCALE,40,40);

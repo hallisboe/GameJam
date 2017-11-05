@@ -38,8 +38,15 @@ class BuildingController{
 		return this.buildings.length - 1;
 	}
 
+	getCurrentTile(x,y) {
+		return {x: Math.floor(x / SCALE), y: Math.floor(y / SCALE)};
+	}
+
+
 	isPosAvailable(pos){
 		let isAvailable = true;
+		let anderskangaaaaleggeseg = this.getCurrentTile(mouseX,mouseY);
+		if(world.tiles[anderskangaaaaleggeseg.x][anderskangaaaaleggeseg.y] != 1) isAvailable = false;
 		this.buildings.forEach(b => {
 			if(abs(pos.x - b.pos.x) <= 3 && abs(pos.y - b.pos.y) <= 3){
 				isAvailable = false;
